@@ -1,5 +1,3 @@
-
-
 function tabSwitch(new_tab, new_content) {
      
     document.getElementById('content_1').style.display = 'none';
@@ -18,6 +16,4 @@ function tabSwitch(new_tab, new_content) {
  
 }
 
-  document.getElementById(new_tab).className = 'active';      
-  
- }
+
