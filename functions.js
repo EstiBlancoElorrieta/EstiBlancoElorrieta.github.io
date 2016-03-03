@@ -3,7 +3,9 @@ function tabSwitch(new_tab, new_content) {
     document.getElementById('content_1').style.display = 'none';
     document.getElementById('content_2').style.display = 'none';
     document.getElementById('content_3').style.display = 'none';  
-    document.getElementById('content_4').style.display = 'none';        
+    document.getElementById('content_4').style.display = 'none'; 
+    document.getElementById('content_5').style.display = 'none';        
+
 
     document.getElementById(new_content).style.display = 'block';   
      
