@@ -1,153 +1,90 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <link rel="icon" href="https://EstiBlancoelorrieta.github.io/favicon.png"  type="image/gif">
     <title>Esti Blanco-Elorrieta</title>
-    <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
-    <link rel="icon" href="https://EstiBlancoelorrieta.github.io/favicon.png" />
     
 </head>
- 
-<body>
- <body bgcolor="gray">
-<div id="tabbed_box_1" class="tabbed_box">
-<div id="tabbed_box" class="container">
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
-#tabbed_box {
-    margin: 0px auto 0px auto;
-    width:1000px;
-}
-.tabbed_box h4 {
-    font-family:Arial, Helvetica, sans-serif;
-    font-size:23px;
-    color:#ffffff;
-    letter-spacing:-1px;
-    margin-bottom:10px;
-}
-.tabbed_box h4 small {
-    color:#e3e9ec;
-    font-weight:normal;
-    font-size:12px;
-    font-family:Verdana, Arial, Helvetica, sans-serif;
-    text-transform:uppercase;
-    position:relative;
-    top:-4px;
-    left:6px;
-    letter-spacing:0px;
-}
-.tabbed_area {
-    border:1px solid #494e52;
-    background-color:#636d76;
-    padding:8px;    
-}
-ul.tabs {
-    margin:0px; padding:0px;
-}
-ul.tabs li {
-    list-style:none;
-    display:inline;
-}
-ul.tabs li a {
-    background-color:#464c54;
-    color:#ffebb5;
-    padding:15px 14px 15px 14px;
-    text-decoration:none;
-    font-size:12px;
-    font-family:Verdana, Arial, Helvetica, sans-serif;
-    font-weight:bold;
-    text-transform:uppercase;
-    border:1px solid #464c54; 
-}
-ul.tabs li a:hover {
-    background-color:#2f343a;
-    border-color:#2f343a;
-}
-ul.tabs li a.active {
-    background-color:#D0D0D0 ;
-    color:#282e32;
-    border:1px solid #464c54; 
-    border-bottom: 1px solid #ffffff;
-}
-.content {
-    background-color:#D0D0D0 ;
-    padding:10px;
-    border:1px solid #464c54;   
-    line-height: 1.5;
-}
-#content_2, #content_3, #content_4, #content_5, #content_6,  #content_7 { display:none; }
-ul.tabs {
-    margin:0px; padding:0px;
-    margin-top:5px;
-    margin-bottom:12px;
-    line-height: 1.5;
-}
-#footer{
-    display: table;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    background: gray;
-    border-style: none;
-
-
-
-}
-
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
+.w3-third img:hover{opacity: 1}
 </style>
+<body class="w3-light-grey w3-content" style="max-width:1600px">
 
-<br>
-<br>
-<br>
-<br>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+  <h3 class="w3-padding-64 w3-center"><b>Esti<br>Blanco-Elorrieta</b></h3>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT ME</a> 
+  <a href="#publications" onclick="w3_close()" class="w3-bar-item w3-button">PUBLICATIONS</a>
+  <a href="https://EstiBlancoElorrieta.github.io/CV_EBE.pdf" onclick="w3_close()" class="w3-bar-item w3-button">CV</a>
+  <a href="#presentations" onclick="w3_close()" class="w3-bar-item w3-button">TALKS</a>
+    <a href="#posters" onclick="w3_close()" class="w3-bar-item w3-button">POSTER PRESENTATIONS</a>
+<a href="#funding" onclick="w3_close()" class="w3-bar-item w3-button">FUNDING</a>
+<a href="#media" onclick="w3_close()" class="w3-bar-item w3-button">MEDIA</a>
+<a href="#code" onclick="w3_close()" class="w3-bar-item w3-button">CODE</a>
 
+</nav>
 
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
+  <span class="w3-left w3-padding">Esti Blanco-Elorrieta</span>
+  <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
+</header>
 
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-    <div class="tabbed_area">
-     
-<script src="functions.js" type="text/javascript"></script> 
-        <ul class="tabs">
-            <li><a href="javascript:tabSwitch('tab_1', 'content_1');" id="tab_1" class="active">About me</a></li>
-            <li><a href="javascript:tabSwitch('tab_2', 'content_2');" id="tab_2">Publications</a></li>
-            <li><a href="javascript:tabSwitch('tab_3', 'content_3');" id="tab_3">Presentations</a></li>
-            <li><a href="javascript:tabSwitch('tab_4', 'content_4');" id="tab_4">CV</a></li>
-            <li><a href="javascript:tabSwitch('tab_5', 'content_5');" id="tab_5">Funding</a></li>
-            <li><a href="javascript:tabSwitch('tab_6', 'content_6');" id="tab_6">Media</a></li>
-            <li><a href="javascript:tabSwitch('tab_7', 'content_7');" id="tab_7">Code</a></li>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px">
 
+  <!-- Push down content on small screens --> 
+  <div class="w3-hide-large" style="margin-top:83px"></div>
+  
+ 
+  
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
 
-        </ul>
-         
-
-        <div id="content_1" class="content">
-
-<CENTER> 
-<h1>Esti Blanco-Elorrieta</h1>
-<img src="https://EstiBlancoelorrieta.github.io/ni3.jpg";height="300" width="300">
-
-<h2> <a eb134-at-nyu-dot-edu</a></h2><br>
-<h3> eb134 [at] nyu [dot] edu</h3>
-<h3> Multilingualism - Language Production - Speech perception - Lexical Access </h3>
-</CENTER>
-
-
-<hr size="2", WIDTH="80%", COLOR NOSHADE</>
-<br>
-
-
-<p> <b> About me: </b> <br><br>
-
-	 I am a fifth year graduate student in Psychology at NYU, working in the <a href="http://www.psych.nyu.edu/nellab/" > Neuroscience of Language lab</a> under Liina Pylkk&auml;nen's supervision. 
+  <!-- About section -->
+  <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="about">
+    <h4><b>About Me</b></h4>
+    <img src="https://EstiBlancoelorrieta.github.io/IMG_8378-2.jpg" alt="Me" class="w3-image w3-padding-32" width="600" height="650">
+    <div class="w3-content w3-justify" style="max-width:600px">
+      <h4>Esti Blanco-Elorrieta</h4>
+      I am a fifth year graduate student in Psychology at NYU, working in the <a href="http://www.psych.nyu.edu/nellab/" > Neuroscience of Language lab</a> under Liina Pylkk&auml;nen's supervision. 
 	My work primarily focuses on understanding the neural architecture of the multilingual brain. Taking the most naturalistic approach possible, I conduct MEG studies looking into i) bilingual lexical access ii) the commonalities between bilingual language production and comprehension, and iii) the adaptive nature of language control mechanisms in different conversational contexts. 
 	The goal of my research is to develop a cohesive framework of bilingual language organization, and theories that represent bilingual language use both in, but crucially also out, of experimental settings.
 		
 	<br><br>In the Fall of 2020, I will be joining the <a href="http://www.wjh.harvard.edu/~caram/" >Cognitive Neuropsychology lab</a> at Harvard University to work under Alfonso Caramazza's supervision.
+    <br>
+    <br>
+      mail: blancoelorrieta@fas.harvard.edu<br>
+      twitter: @blancoelorrieta
+      <hr class="w3-opacity">
+ 
+   
 
-	
-<br></div>
-
-        <div id="content_2" class="content"><h2> Publications</h2>
-
+    </div>
+  </div>
+  </div>
+ <!-- Publication section -->
+  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="publications">
+    <div class="w3-content" style="max-width:600px">
+      <h4 class="w3-center"><b>Publications</b></h4>
+    <p> 
 <b> Blanco-Elorrieta, E.*, </b> Gwilliams, L.*, Marantz, A., & Pylkkänen, L. (submitted). Neural bases of perceptual adaptation to foreign accents. <br><br>
 		
 <b> Blanco-Elorrieta, E., </b> & Caramazza, A. (submitted). A selection-by-activation model of bilingual lexical access. <br><br>						
@@ -184,20 +121,24 @@ Neuroscience (CCN) <a href=https://EstiBlancoElorrieta.github.io/Paper_CCN.pdf>[
 MEG reveals comprehension control mechanisms in anterior cingulate cortex and domain-general production control in dorsolateral prefrontal cortex. <i> The Journal of Neuroscience</i> 36(2): 290-301</i> <a href="http://www.jneurosci.org/content/36/2/290.short">doi:10.1523/JNEUROSCI.2597-15.2016</a> <a href=https://EstiBlancoElorrieta.github.io/Blanco-Elorrieta_Pylkkanen2016b.pdf>[pdf]</a>
 <br>
 <br>
-<b>Blanco-Elorrieta, E. </b> & Pylkk&auml;nen, L. (2015).  Composition of complex numbers: Delineating the computational role of the left anterior temporal lobe.<i> NeuroImage </i>124(Pt A):194-203</h4> <a href="http://www.sciencedirect.com/science/article/pii/S1053811915007685">doi:10.1016/j.neuroimage.2015.08.049</a> <a href=https://EstiBlancoElorrieta.github.io/Blanco-Elorrieta_Pylkkanen2016.pdf>[pdf]</a>
+<b>Blanco-Elorrieta, E. </b> & Pylkk&auml;nen, L. (2015).  Composition of complex numbers: Delineating the computational role of the left anterior temporal lobe.<i> NeuroImage </i>124(Pt A):194-203<a href="http://www.sciencedirect.com/science/article/pii/S1053811915007685">doi:10.1016/j.neuroimage.2015.08.049</a> <a href=https://EstiBlancoElorrieta.github.io/Blanco-Elorrieta_Pylkkanen2016.pdf>[pdf]</a>
 <br>
 <br>
-<b>Blanco Elorrieta, E. </b> & Pylkk&auml;nen, L. (2015). Brain bases of language selection: MEG evidence from Arabic-English bilingual language production. <i> Frontiers in Human Neuroscience, 9:27 </i>  <a href="http://journal.frontiersin.org/Journal/10.3389/fnhum.2015.00027/abstract">doi:10.3389/fnhum.2015.00027</a>  <a href= "http://www.psych.nyu.edu/pylkkanen/lab/publications/blanco-elorrieta_pylkkanen_frontiers2015.pdf"> [pdf]</a></h4><br>
+<b>Blanco Elorrieta, E. </b> & Pylkk&auml;nen, L. (2015). Brain bases of language selection: MEG evidence from Arabic-English bilingual language production. <i> Frontiers in Human Neuroscience, 9:27 </i>  <a href="http://journal.frontiersin.org/Journal/10.3389/fnhum.2015.00027/abstract">doi:10.3389/fnhum.2015.00027</a>  <a href= "http://www.psych.nyu.edu/pylkkanen/lab/publications/blanco-elorrieta_pylkkanen_frontiers2015.pdf"> [pdf]</a><br>
 <br>
-Pylkk&auml;nen, L., Bemis, D.K., & <b>Blanco-Elorrieta, E.</b> (2014).  Building phrases in language production: An MEG study of simple composition. <i>Cognition </i>, 133, 371-384 <a href="http://www.sciencedirect.com/science/article/pii/S0010027714001383">doi:10.1016/j.cognition.2014.07.001</a>   <a href="http://www.psych.nyu.edu/pylkkanen/lab/publications/pylkkanen_bemis_elorrieta_buildingphrases_cognition2014.pdf">[pdf]</a></h4><br>
-<br>
-<br>
+Pylkk&auml;nen, L., Bemis, D.K., & <b>Blanco-Elorrieta, E.</b> (2014).  Building phrases in language production: An MEG study of simple composition. <i>Cognition </i>, 133, 371-384 <a href="http://www.sciencedirect.com/science/article/pii/S0010027714001383">doi:10.1016/j.cognition.2014.07.001</a>   <a href="http://www.psych.nyu.edu/pylkkanen/lab/publications/pylkkanen_bemis_elorrieta_buildingphrases_cognition2014.pdf">[pdf]</a><br>
+ 
+    </div>
+  </div>    
+  
 
-</div>
-        <div id="content_3" class="content">
-		<h2>Talks </h2>
-	
-		<h3>2020</h3>
+  
+ <!-- Talks section -->
+  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="presentations">
+    <div class="w3-content" style="max-width:600px">
+      <h4 class="w3-center"><b>Talks</b></h4>
+    <p> 
+    <h3>2020</h3>
 <b>Blanco-Elorrieta, E. </b>(2020). Bilingual speech comprehension. Mesgarani lab, Columbia University, USA.<br><br>
 <b>Blanco-Elorrieta, E. </b>(2020). Growth in times of crisis. Entre cuatro paredes. Expatriados & Co., New York, USA.<br><br>
 <b>Blanco-Elorrieta, E. </b>(2020). The Neurobiology of Multilingualism. Linguistics Colloquium. Cornell University, USA.<br><br>
@@ -260,12 +201,17 @@ Neuroscience of Language Workshop 2015, Abu Dhabi, UAE.
 <br>
 <b>Blanco-Elorrieta, E. </b> & Pylkk&auml;nen, L. (2015). Brain bases of language selection: MEG evidence from Arabic-English bilingual language production. <br>
 NYUAD Annual Research Conference 2015, Abu Dhabi, U.A.E.
-<br>
-<br>		
-		
-<h2>Poster presentations</h2>	
-		
-		<h3>2020</h3>
+    
+    </div>
+    </div>
+    
+
+  <!-- Posters section -->
+  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="posters">
+    <div class="w3-content" style="max-width:600px">
+      <h4 class="w3-center"><b>Poster presentations</b></h4>
+    <p> 
+<h3>2020</h3>
 		<b>Blanco-Elorrieta, E.</b>, Hauptman, M., Pylkkänen, L. (2020). Planning production: Morphological, semantic, and syntactic representations. Cognitive Neuroscience Society (CNS) Conference, Boston, USA.<br><br>
 		
 		<h3>2019</h3>
@@ -324,18 +270,19 @@ Society for the Neurobiology of Language Annual Conference, Amsterdam, The Nethe
 <h3>2013</h3>
 Martin, C.D., <b> Blanco-Elorrieta, E.</b>, & Du&ntilde;abeitia, J.A. (2013). An alternative explanation to asymmetrical switch-costs in unbalanced bilinguals.<br>
 Annual Psychonomics Conference, Toronto, Canada.
-       
-</div>
-        <div id="content_4" class="content"><br>
-        If you would like to know more about me, you can download my <a href=https://EstiBlancoElorrieta.github.io/CV_EBE.pdf> CV</a> here.</a>
-<br>
-</div>
- 
-<div id="content_5" class="content"><h2> External funding and awards</h2>
+  
+    </div>
+  </div>        
+    
+<!-- Funding section -->
+  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="funding">
+    <div class="w3-content" style="max-width:600px">
+      <h4 class="w3-center"><b>Funding and Awards</b></h4>
+    <p> 
 	<b>2020:</b> Coons/Leibowitz Graduate Student Teaching Award<br>
 	<b>2019:</b> Forbes magazine: 30 under 30 in Science <br>	
 	<b>2019:</b> Martin Braine Dissertation fellowship in Psychology <br>
-	<b>2018:</b> The Dingwall Foundation: Dissertation Fellowship in the Cognitive, Clinical, and Neural Foundations of Language.<br>
+	<b>2018:</b> The Dingwall Foundation: Dissertation Fellowship in the Cognitive, Clinical, and Neural Foundations of Language. ($30,000)<br>
 	<b>2018:</b> New York University: Dean's Student travel award.<br>
 	<b>2017:</b> Society of the Neurobiology of Language predoctoral fellow merit award.<br>
 <b>2017:</b> Woodcock Institute Grant Research Award ($9,951).<br>
@@ -350,18 +297,21 @@ year, dependent on tuition fees).<br>
 <b>2010:</b> University of Deusto: grant for undergraduate research projects (€3,000).<br>
 <b>2008:</b> Basque Government: Distinguished Academic scholarship (waiver of first year
 University matriculation fees). <br><br>
-</div>
-	
- <div id="content_6" class="content"><h2> Media </h2>
-	 
-	 <b> Coverage of my research and inclusion in the Forbes 30 under 30 list </b> <br><br>
+    </div>
+  </div>    
+<!-- Media section -->
+  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="media">
+    <div class="w3-content" style="max-width:600px">
+      <h4 class="w3-center"><b>Media</b></h4>
+    <p> 
+ <b> Coverage of my research and inclusion in the Forbes 30 under 30 list </b> <br><br>
 	 
 	 On El Pais newspaper: <a href=https://elpais.com/elpais/2020/01/27/ciencia/1580127774_061342.html> Los bilingües se expresan con más sofisticación y tienen mayor facilidad para comunicarse</a><br>
 	 On Deia newspaper: <a href=https://www.deia.eus/vivir-on/historias-de/2020/01/24/profesion-genio-mil-lenguajes-historias/1013567.html> De profesión, genio de los mil lenguajes</a><br>
 	 Radio interview in radio COPE on my research on the neurobiology of bilinguism: <a href=https://www.cope.es/programas/la-tarde/audios/tarde-04-02-2020-1700-1800-horas-20200204_997089>here</a> beginning on minute 20<br>
 	 Reporting of the research in Onda Cero: <a href=https://www.ondacero.es/programas/julia-en-la-onda/programas-completos/30012020_202001305e331a9e0cf28bb05d0a7f73.html>from minute 26 onwards.</a><br>
 	Interview on Basque public radio <a href=https://www.eitb.eus/eu/irratia/euskadi-irratia/programak/baipasa/audioak/osoa/7024549/baipasa-20200211/?utm_campaign=General&utm_medium=PODCAST&utm_source=BAIPASA>1 hour 9 minute onwards.</a><br>
-	Interview on the Spanish public radio <a href=https://www.rtve.es/alacarta/audios/marca-espana/marca-espana-joven-cientifica-reconocida-como-forbes-30-under-30/5523857/>here</a><br><br>
+	Interview on the Spanish public radio <a href=https://www.rtve.es/alacarta/audios/marca-espana/marca-espana-joven-cientifica-reconocida-como-forbes-30-under-30/5523857>here</a><br><br>
 	 
  	<b>International coverage of the Scientific reports article on the shared neural bases of sign and speech</b> <br><br>
 	 
@@ -369,7 +319,7 @@ University matriculation fees). <br><br>
         
 	 On the American Association for the Advancement of Science (AAAS) news: <a href=https://eurekalert.org/pub_releases/2018-04/nyu-wws032918.php> When we sign, we build phrases with similar neural mechanisms as when we speak</a><br>
 	 
-	 On the Italian version of web of science <a href=http://www.lescienze.it/news/2018/04/04/news/lingua_segni_parlato_stessi_circuiti_neurali-3927543/> When we sign, we build phrases with similar neural mechanisms as when we speak</a> <br>
+	 On the Italian version of web of science <a href=http://www.lescienze.it/news/2018/04/04/news/lingua_segni_parlato_stessi_circuiti_neurali-3927543> When we sign, we build phrases with similar neural mechanisms as when we speak</a> <br>
 	
 	 Australasian Neuroscience society <a href=https://www.ans.org.au/news/news-from-around-the-world> When we sign, we build phrases with similar neural mechanisms as when we speak</a> <br>
 	 Russian N1 news channel's report can be found <a href=https://nplus1.ru/news/2018/04/06/spoken-and-signed> here</a> <br>
@@ -379,11 +329,11 @@ University matriculation fees). <br><br>
 	 
 	 The press release from NYU can be found <a href=https://www.nyu.edu/about/news-publications/news/2017/august/is-changing-languages-effortful-for-bilingual-speakers--depends-.html> here </a> <br><br>
 	 
-	 On Exception magazine: <a href=https://exceptionmag.com/124110/chatting-makes-it-easy-to-switch-languages/> Chatting makes it easy to switch languages </a><br>
+	 On Exception magazine: <a href=https://exceptionmag.com/124110/chatting-makes-it-easy-to-switch-languages> Chatting makes it easy to switch languages </a><br>
 	 
 	 On Science Daily: <a href=https://www.sciencedaily.com/releases/2017/08/170830103726.htm> Is changing languages effortful for bilingual speakers? Depends on the situation </a><br>
 	 
-	 On Lukor magazine: <a href=http://www.lukor.net/2017/08/31/chatting-makes-it-easy-to-switch-languages/> Chatting makes it easier to switch between languages</a><br>
+	 On Lukor magazine: <a href=http://www.lukor.net/2017/08/31/chatting-makes-it-easy-to-switch-languages> Chatting makes it easier to switch between languages</a><br>
 	 
 	 On Science Codex: <a href=http://www.sciencecodex.com/changing-languages-effortful-bilingual-speakers-depends-situation-614000> Is changing languages effortful for bilingual speakers? </a><br>
 	 
@@ -407,22 +357,26 @@ An article in Khaleej times:
 <a href=http://www.khaleejtimes.com/bilinguals-are-smarter-than-you-think> Bilinguals are smarter than you think</a>
 <br>
 An article in The National:
-<a href=http://www.thenational.ae/uae/education/abu-dhabi-study-sheds-new-light-on-benefits-of-children-being-bilingual>Abu Dhabi study sheds new light on benefits of children being bilingual</a>
+<a href=http://www.thenational.ae/uae/education/abu-dhabi-study-sheds-new-light-on-benefits-of-children-being-bilingual> Abu Dhabi study sheds new light on benefits of children being bilingual</a>
 <br>
 An article in ZAWYA:
-<a href=https://www.zawya.com/story/NYU_Abu_Dhabi_researchers_reveal_function_of_bilingual_brain-WAM20160214091032136/>NYU Abu Dhabi researchers reveal workings of the bilingual brain</a>
+<a href=https://www.zawya.com/story/NYU_Abu_Dhabi_researchers_reveal_function_of_bilingual_brain-WAM20160214091032136> NYU Abu Dhabi researchers reveal workings of the bilingual brain</a>
 <br>
 An article in United Arab Emirates News Agency:
-<a href=http://www.wam.ae/en/news/general/1395291564713.html/>NYU Abu Dhabi researchers reveal workings of the bilingual brain</a>
+<a href=http://www.wam.ae/en/news/general/1395291564713.html> NYU Abu Dhabi researchers reveal workings of the bilingual brain </a>
 <br>
 An article in MSN News:
-<a href=http://www.msn.com/en-ae/news/world/nyu-abu-dhabi-study-shows-becoming-bilingual-depends-on-the-brain/ar-BBpvVaX/>NYU Abu Dhabi study shows becoming bilingual depends on the brain</a>
+<a href=http://www.msn.com/en-ae/news/world/nyu-abu-dhabi-study-shows-becoming-bilingual-depends-on-the-brain/ar-BBpvVaX> NYU Abu Dhabi study shows becoming bilingual depends on the brain</a>
 <br>
-
-</div>
- <div id="content_7" class="content"><h2> Code </h2>
-
-	 <b> Multidimensional Scaling (MDS)</b> <br><br>
+    </div>
+  </div>   
+  
+<!-- Code section -->
+  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="code">
+    <div class="w3-content" style="max-width:600px">
+      <h4 class="w3-center"><b>Code</b></h4>
+    <p> 
+    <b> Multidimensional Scaling (MDS)</b> <br><br>
 You can download an annotated sample code for an MDS analysis of US cities <a href="https://EstiBlancoElorrieta.github.io/MDS_sample.m">here</a><br><br>				
 
 	 
@@ -435,17 +389,34 @@ The data is available <a href="https://EstiBlancoElorrieta.github.io/data_sounds
 The labels are available <a href="https://EstiBlancoElorrieta.github.io/Labels.mat">here</a><br>		
 	 <br><br>	 
 	 
-	 
-</div>
+ 
+    </div>
+  </div>    
+
+  <div class="w3-black w3-center w3-padding-24">Last updated 06/10/2020</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+</script>
 
 
-</div>
-    </div>
-    </div>
-</div>
-  <div id="footer" class="content">
-				Last Updated 10/06/2020
-			</div>
-  
 </body>
 </html>
