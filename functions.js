@@ -7,7 +7,6 @@ function tabSwitch(new_tab, new_content) {
     document.getElementById('content_5').style.display = 'none';        
     document.getElementById('content_6').style.display = 'none';   
     document.getElementById('content_7').style.display = 'none';   
-    document.getElementById('content_8').style.display = 'none';   
 
     document.getElementById(new_content).style.display = 'block';   
      
@@ -19,7 +18,6 @@ function tabSwitch(new_tab, new_content) {
     document.getElementById('tab_5').className = '';
     document.getElementById('tab_6').className = '';  
     document.getElementById('tab_7').className = '';  
-    document.getElementById('tab_8').className = '';  
     document.getElementById(new_tab).className = 'active';      
  
 }
