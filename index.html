@@ -1,401 +1,310 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="https://EstiBlancoelorrieta.github.io/favicon.png"  type="image/gif">
-    <title>Esti Blanco-Elorrieta</title>
+  <link rel="icon" href="https://EstiBlancoelorrieta.github.io/favicon.png" type="image/gif">
+  <title>Esti Blanco-Elorrieta</title>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4S9SLZY2J6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  gtag('config', 'G-4S9SLZY2J6');
-</script>	
-	
-    
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+    .profile-pic {
+      width: 150px;
+      border-radius: 50%;
+      margin: 20px auto 10px auto;
+      display: block;
+    }
+    .contact-icons { margin-bottom: 15px; }
+    .contact-icons a {
+      margin: 0 8px;
+      font-size: 20px;
+      color: grey;
+      text-decoration: none;
+    }
+    .contact-icons a:hover { color: black; }
+    .w3-content {
+      max-width: 1000px !important;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+    .content-section {
+      display: none;
+      padding: 48px 32px;
+      min-height: 100vh;
+    }
+    .w3-sidebar { height: 100%; }
+  </style>
 </head>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<style>
-body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-.w3-third img{margin-bottom: -6px; opacity: 0.8; cursor: pointer}
-.w3-third img:hover{opacity: 1}
-</style>
+
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
-  <h3 class="w3-padding-64 w3-center"><b>Esti<br>Blanco-Elorrieta</b></h3>
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
-  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT ME</a> 
-  <a href="#publications" onclick="w3_close()" class="w3-bar-item w3-button">PUBLICATIONS</a>
-  <a href="https://EstiBlancoElorrieta.github.io/CV_EBE.pdf" onclick="w3_close()" class="w3-bar-item w3-button">CV</a>
-  <a href="#presentations" onclick="w3_close()" class="w3-bar-item w3-button">INVITED TALKS</a>
-<a href="#funding" onclick="w3_close()" class="w3-bar-item w3-button">FUNDING AND AWARDS</a>
-<a href="#outreach" onclick="w3_close()" class="w3-bar-item w3-button">SCIENTIFIC OUTREACH</a>
-<a href="#advocacy" onclick="w3_close()" class="w3-bar-item w3-button">(TRANS)GENDER ADVOCACY</a>
-<a href="#media" onclick="w3_close()" class="w3-bar-item w3-button">MEDIA</a>
+<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center" 
+     style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
 
+  <img src="https://EstiBlancoelorrieta.github.io/headshot3.png" alt="Esti Blanco-Elorrieta" class="profile-pic">
+
+  <div class="contact-icons">
+    <a href="mailto:eb134@nyu.edu"><i class="fa fa-envelope"></i></a>
+    <a href="https://twitter.com/blancoelorrieta" target="_blank"><i class="fab fa-twitter"></i></a>
+  </div>
+
+  <h3 class="w3-center"><b>Esti<br>Blanco-Elorrieta</b></h3>
+
+  <a href="javascript:void(0)" onclick="showSection('about')" class="w3-bar-item w3-button">ABOUT ME</a> 
+  <a href="javascript:void(0)" onclick="showSection('publications')" class="w3-bar-item w3-button">PUBLICATIONS</a>
+  <a href="https://EstiBlancoElorrieta.github.io/CV_EBE.pdf" class="w3-bar-item w3-button">CV</a>
+  <a href="javascript:void(0)" onclick="showSection('presentations')" class="w3-bar-item w3-button">INVITED TALKS</a>
+  <a href="javascript:void(0)" onclick="showSection('funding')" class="w3-bar-item w3-button">FUNDING AND AWARDS</a>
+  <a href="javascript:void(0)" onclick="showSection('outreach')" class="w3-bar-item w3-button">SCIENTIFIC OUTREACH</a>
+  <a href="javascript:void(0)" onclick="showSection('advocacy')" class="w3-bar-item w3-button">(TRANS)GENDER ADVOCACY</a>
+  <a href="javascript:void(0)" onclick="showSection('media')" class="w3-bar-item w3-button">MEDIA</a>
 </nav>
 
-<!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
-  <span class="w3-left w3-padding">Esti Blanco-Elorrieta</span>
-  <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
-</header>
-
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-<!-- !PAGE CONTENT! -->
+<!-- Main content -->
 <div class="w3-main" style="margin-left:300px">
 
-  <!-- Push down content on small screens --> 
-  <div class="w3-hide-large" style="margin-top:83px"></div>
-  
- 
-  
-  <!-- Modal for full size images on click-->
-  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
-    <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
-    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-      <img id="img01" class="w3-image">
-      <p id="caption"></p>
+  <!-- About -->
+  <div class="w3-container w3-dark-grey w3-text-light-grey content-section" id="about">
+    <div class="w3-content">
+      <h4><b>About Me</b></h4>
+      <p>I am an Assistant Professor of Psychology and Neural Science at New York University. 
+      In my research, I combine insights from monolingual and multilingual individuals, 
+      who process language through speech or sign, to inform an inclusive and comprehensive 
+      neurobiology of language. My research combines data from neuroimaging, computational 
+      and behavioral methods with theoretical insights from linguistics, psychology and 
+      neuroscience. Further, I take the most naturalistic approach possible to inform a 
+      theory that can not only account for laboratory based experiments but rather aims 
+      to capture the multifaceted and socially influenced experience of what it means to 
+      communicate in the real world.</p>
+      <p>I obtained my PhD from New York University, where I worked at the 
+      <a href="http://www.psych.nyu.edu/nellab/">Neuroscience of Language lab</a> under 
+      Liina Pylkkänen's supervision and completed my post-doctoral training at Harvard University, 
+      working in the <a href="https://cogneuro.psychology.fas.harvard.edu/people/esti-blanco-elorrieta">Cognitive Neuropsychology lab</a> 
+      under Alfonso Caramazza's supervision. In 2019, I was recognized as a 
+      <a href="https://www.forbes.com/profile/esti-blanco-elorrieta/?sh=6fce14906213">Forbes 30 under 30 scientist</a>.</p>
     </div>
   </div>
 
-  <!-- About section -->
-  <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="about">
-    <h4><b>About Me</b></h4>
-    <img src="https://EstiBlancoelorrieta.github.io/headshot3.png" alt="Me" class="w3-image w3-padding-32" width="400" height="450">
-    <div class="w3-content w3-justify" style="max-width:600px">
-	    
-      <h4>Esti Blanco-Elorrieta</h4>
-      I am an Assistant Professor of Psychology and Neural Science at New York University. 
-In my research, I combine insights from monolingual and multilingual individuals, who process language through speech or sign, to inform an inclusive and comprehensive neurobiology of language. 
-	   My research combines data from neuroimaging, computational and behavioral methods with theoretical insights from linguistics, psychology and neuroscience. 
-	    Further, I take the most naturalistic approach possible to inform a theory that can not only account for laboratory based experiments but rather aims to capture the multifaceted and socially influenced experience of what it means to communicate in the real world.
-	
-	  
-
-	<br><br>I obtained my PhD from New York University, where I worked at the <a href="http://www.psych.nyu.edu/nellab/" > Neuroscience of Language lab</a> under Liina Pylkk&auml;nen's supervision and completed my post-doctoral training at Harvard University, working in the <a href="https://cogneuro.psychology.fas.harvard.edu/people/esti-blanco-elorrieta">Cognitive Neuropsychology lab</a> under Alfonso Caramazza's supervision. In 2019, I was recognized as a <a href="https://www.forbes.com/profile/esti-blanco-elorrieta/?sh=6fce14906213"> Forbes 30 under 30 scientist.</a> 
-	    
-    <br>
-    <br>
-      mail: eb134@nyu.edu<br>
-      twitter: @blancoelorrieta
-      <hr class="w3-opacity">
- 
-   
-
-    </div>
-  </div>
-  </div>
- <!-- Publication section -->
-  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="publications">
-    <div class="w3-content" style="max-width:600px">
+  <!-- Publications -->
+  <div class="w3-container w3-light-grey content-section" id="publications">
+    <div class="w3-content">
       <h4 class="w3-center"><b>Publications</b></h4>
-    <p>
-
-23. <b>Blanco-Elorrieta, E. </b> & Arantzeta, M. (2025). Basque-Spanish bilingual aphasia: a case-study to inform bilingual language organization.<i> Neurobiology of Language. </i><br><br>	    
-	    
+      <p>
+        23. <b>Blanco-Elorrieta, E. </b> & Arantzeta, M. (2025). Basque-Spanish bilingual aphasia: a case-study to inform bilingual language organization.<i> Neurobiology of Language. </i><br><br>	    
 22. <b>Blanco-Elorrieta, E. </b> (2025). Is adaptation the new ‘bilingual advantage’?. <i> Trends in Cognitive Sciences </i>, 1-28.<a href="https://doi.org/10.1016/j.tics.2024.11.003">https://doi.org/10.1016/j.tics.2024.11.003</a><br><br>
-	    
-21. Baus, C., Millan, I., Chen, X. J., & <b> Blanco-Elorrieta, E. </b> (2024). Exploring Language Comprehension through Cortical Tracking: the bilingual test case. <i> Neurobiology of Language </i>, 1-28. <a href="https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00141/120015"> https://doi.org/10.1162/nol_a_00141</a><br><br>
-
-20. Abdullah, L., Valdez, D., <b> Blanco-Elorrieta, E., </b> (2023). ¿Cómo qué, cómo qué? cómo qué? Single-language echolalia in a bilingual female with Progressive Supranuclear Palsy: A case report. <i> Archives of Clinical Neuropsychology </i>, 38(7), 1482-1482. <a href="https://academic.oup.com/acn/article/38/7/1482/7299920"> https://doi.org/10.1093/arclin/acad067.319</a> <br><br>
-	    
-19. Zhu, J., <b> Blanco-Elorrieta, E., </b> Sun, Y., Szakay, A, & Sowman, P. (2022). Natural vs forced language switching: free selection and consistent choices eliminate significant performance costs and cognitive demands in the brain.<i>Neuroimage</i> 247, (2022): 118797 <a href="https://www.sciencedirect.com/science/article/pii/S1053811921010685">https://doi.org/10.1016/j.neuroimage.2021.118797</a><br><br>
-
-18. <b> Blanco-Elorrieta, E.*, </b> Hauptman, M.*, & Pylkk&auml;nen, L. (2021). Inflection across categories: Tracking abstract morphological processingin language production with MEG.<i> Cerebral Cortex</i>, 309 <a href="https://academic.oup.com/cercor/advance-article/doi/10.1093/cercor/bhab309/6369314">https://doi.org/10.1093/cercor/bhab309</a><br><br>
-
-17. <b> Blanco-Elorrieta, E., </b> & Caramazza, A., (2021). On the need of theoretically guided approaches to possible bilingual advantages: an evaluation of the potential loci in the language and executive control systems. <i>Neurobiology of language </i>, 1-16. <a href="https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00041/101895/On-the-Need-for-Theoretically-Guided-Approaches-to">https://doi.org/10.1162/nol_a_00041</a><br><br>
-	    
-16. Honari-Jahromi, M., Chouinard,  B., <b> Blanco-Elorrieta, E., </b> Pylkk&auml;nen, L.,  & Fyshe, A., (2021). Neural representation of words within phrases: Temporal evolution of color-adjectives and object-nouns during simple composition.<i> Plos One </i>, 16.3 (2021): e0242754. <a href="https://doi.org/10.1371/journal.pone.0242754">https://doi.org/10.1371/journal.pone.0242754</a> <a href="https://EstiBlancoElorrieta.github.io/PlosOne2021.pdf">[pdf]</a><br><br>
-		
-15. <b> Blanco-Elorrieta, E., </b> & Caramazza, A. (2021). A common selection mechanism at each linguistic level in bilingual and monolingual language production.<i>Cognition</i> 104625. <a href="https://doi.org/10.1016/j.cognition.2021.104625">https://doi.org/10.1016/j.cognition.2021.104625</a> <a href="https://EstiBlancoElorrieta.github.io/Cognition2021.pdf">[pdf]</a><br><br>						
-
-14. <b> Blanco-Elorrieta, E.*, </b> Gwilliams, L.*, Marantz, A., & Pylkk&auml;nen, L. (2020). Adaptation to mis-pronounced speech: evidence for a prefrontal-cortex repair mechanism.<i> Nature Scientific Reports</i>, 11, 97(2011) <a href="https://www.nature.com/articles/s41598-020-79640-0">doi.org/10.1038/s41598-020-79640-0</a> <a href="https://EstiBlancoElorrieta.github.io/BlancoElorrieta_etal_2021.pdf">[pdf]</a>  <br><br>
-	    
-13. <b> Blanco-Elorrieta, E.</b>, Ding, N., Pylkk&auml;nen, L., & Poeppel, D. (2020). Understanding requires tracking: Noise and knowledge interact in bilingual language comprehension.<i>Journal of Cognitive Neuroscience</i> 32(10), 1975-1983 <a href="https://www.mitpressjournals.org/doi/abs/10.1162/jocn_a_01610">doi/abs/10.1162/jocn_a_01610</a> <a href="https://EstiBlancoElorrieta.github.io/BlancoElorrieta_etal_2020.pdf">[pdf]</a><br><br>		
-
-12. Liu, H., Zhang, Y., <b> Blanco-Elorrieta, E., </b> Hea, Y., Chen, B. (2019). Role of proactive control on subcomponents of language control: 
-Evidence from trilinguals. <i> Cognition </i> 194, 104055 <a href="https://www.sciencedirect.com/science/article/pii/S0010027719302288?via%3Dihub">doi.org/10.1016/j.cognition.2019.104055</a> <a href="https://EstiBlancoElorrieta.github.io/Liu_etal.pdf">[pdf]</a> <br><br>	
-		
-11. <b> Blanco-Elorrieta, E.</b>, & Pylkk&auml;nen, L. (2018). Ecological validity in bilingualism research and the bilingual advantage.<i> Trends in Cognitive Sciences</i> 22(12), 1117-1126 <a href="https://doi.org/10.1016/j.tics.2018.10.001">doi.org/10.1016/j.tics.2018.10.001</a> <a href="https://EstiBlancoElorrieta.github.io/BlancoElorrieta_Pylkkanen_TiCS2018.pdf">[pdf]</a><br><br>				
-	
-10. <b> Blanco-Elorrieta, E.</b>, Emmorey, K., & Pylkk&auml;nen, L. (2018). Language switching decomposed through MEG and evidence from bimodal bilinguals. <i> Proceedings of the National Academy of Sciences </i> 115.39 (2018): 9708-9713 <a href="http://www.pnas.org/content/early/2018/09/10/1809779115">doi.org/10.1073/pnas.1809779115</a> <a href="https://EstiBlancoElorrieta.github.io/BlancoElorrieta_Emmorey_Pylkkanen2018.pdf">[pdf]</a><br><br>
-		
-9. <b> Blanco-Elorrieta, E.</b>, Kastner, I., Emmorey, K., & Pylkk&auml;nen, L. (2018). A shared neurobiology for
-		building phrases in signed and spoken language.<i> Scientific Reports </i> 8, 5492 <a href="https://www.nature.com/articles/s41598-018-23915-0">doi:10.1038/s41598-018-23915-0</a> <a href="https://EstiBlancoElorrieta.github.io/Blanco-Elorrieta_et_al-2018-Scientific_Reports.pdf">[pdf]</a><br><br>
-
-8. <b>Blanco-Elorrieta, E.</b>, Ferreira, S.V., Del Prato, P., & Pylkk&auml;nen, L. (2017). The priming of Basic Combinatory Responses in MEG.<br><i> Cognition </i> 70, 49-63 <a href="http://www.sciencedirect.com/science/article/pii/S0010027717302536">doi.org/10.1016/j.cognition.2017.09.010</a> <a href="https://EstiBlancoElorrieta.github.io/Blanco-Elorrieta_et_al-2017.pdf">[pdf]</a>
-
-<br>
-<br>	
-7. Fyshe, A., <b>Blanco-Elorrieta, E. </b> & Pylkkänen, L. (2017). The neural representation of concepts during composition. Cognitive Computational
-Neuroscience (CCN) <a href=https://EstiBlancoElorrieta.github.io/Fysche_BlancoElorrieta_Pylkkanen.pdf>[pdf]</a>		
-		
-<br>
-<br>	
-6. <b>Blanco-Elorrieta, E. </b> Emmorey, K., & Pylkkänen, L. (2017). Decoding Language Switching in the Bilingual Brain: evidence from simultaneous speech and sign production. Cognitive Computational
-Neuroscience (CCN) <a href=https://EstiBlancoElorrieta.github.io/Paper_CCN.pdf>[pdf]</a>		
-<br>
-<br>
-5. <b>Blanco-Elorrieta, E.</b>, & Pylkk&auml;nen, L. (2017). Bilingual language switching in the lab vs. in the wild: The spatio-temporal dynamics of adaptive language control.<i> The Journal of Neuroscience</i>, 37(37), 9022-9036 <a href="http://www.jneurosci.org/content/37/37/9022">doi.org/10.1523/JNEUROSCI.0553-17.2017</a> <a href=https://EstiBlancoElorrieta.github.io/BlancoElorrieta_Pylkkanen2017.pdf>[pdf]</a>
-<br>
-
-<br>4. <b>Blanco-Elorrieta, E.</b> & Pylkk&auml;nen, L. (2016). Bilingual language control in perception vs. action:<br>
-MEG reveals comprehension control mechanisms in anterior cingulate cortex and domain-general production control in dorsolateral prefrontal cortex. <i> The Journal of Neuroscience</i> 36(2): 290-301</i> <a href="http://www.jneurosci.org/content/36/2/290.short">doi:10.1523/JNEUROSCI.2597-15.2016</a> <a href=https://EstiBlancoElorrieta.github.io/Blanco-Elorrieta_Pylkkanen2016b.pdf>[pdf]</a>
-<br>
-<br>
-3. <b>Blanco-Elorrieta, E. </b> & Pylkk&auml;nen, L. (2015).  Composition of complex numbers: Delineating the computational role of the left anterior temporal lobe.<i> NeuroImage </i>124(Pt A):194-203<a href="http://www.sciencedirect.com/science/article/pii/S1053811915007685">doi:10.1016/j.neuroimage.2015.08.049</a> <a href=https://EstiBlancoElorrieta.github.io/Blanco-Elorrieta_Pylkkanen2016.pdf>[pdf]</a>
-<br>
-<br>
-2. <b>Blanco Elorrieta, E. </b> & Pylkk&auml;nen, L. (2015). Brain bases of language selection: MEG evidence from Arabic-English bilingual language production. <i> Frontiers in Human Neuroscience, 9:27 </i>  <a href="http://journal.frontiersin.org/Journal/10.3389/fnhum.2015.00027/abstract">doi:10.3389/fnhum.2015.00027</a>  <a href= "http://www.psych.nyu.edu/pylkkanen/lab/publications/blanco-elorrieta_pylkkanen_frontiers2015.pdf"> [pdf]</a><br>
-<br>
-1. Pylkk&auml;nen, L., Bemis, D.K., & <b>Blanco-Elorrieta, E.</b> (2014).  Building phrases in language production: An MEG study of simple composition. <i>Cognition </i>, 133, 371-384 <a href="http://www.sciencedirect.com/science/article/pii/S0010027714001383">doi:10.1016/j.cognition.2014.07.001</a>   <a href="http://www.psych.nyu.edu/pylkkanen/lab/publications/pylkkanen_bemis_elorrieta_buildingphrases_cognition2014.pdf">[pdf]</a><br>
- 
+21. Baus, C., Millan, I., Chen, X. J., & <b> Blanco-Elorrieta, E. </b> (2024). Exploring Language Comprehension through Cortical Tracking: the bilingual test case. <i> Neurobiology of Language </i>, 1-28. <a href="https://doi.org/10.1162/nol_a_00141"> https://doi.org/10.1162/nol_a_00141</a><br><br>
+20. Abdullah, L., Valdez, D., <b> Blanco-Elorrieta, E., </b> (2023). ¿Cómo qué, cómo qué? cómo qué? Single-language echolalia in a bilingual female with Progressive Supranuclear Palsy: A case report. <i> Archives of Clinical Neuropsychology </i>, 38(7), 1482-1482. <a href="https://doi.org/10.1093/arclin/acad067.319"> https://doi.org/10.1093/arclin/acad067.319</a> <br><br>
+19. Zhu, J., <b> Blanco-Elorrieta, E., </b> Sun, Y., Szakay, A, & Sowman, P. (2022). Natural vs forced language switching: free selection and consistent choices eliminate significant performance costs and cognitive demands in the brain.<i>Neuroimage</i> 247, (2022): 118797 <a href="https://doi.org/10.1016/j.neuroimage.2021.118797">https://doi.org/10.1016/j.neuroimage.2021.118797</a><br><br>
+18. <b> Blanco-Elorrieta, E.*, </b> Hauptman, M.*, & Pylkk&auml;nen, L. (2021). Inflection across categories: Tracking abstract morphological processing in language production with MEG.<i> Cerebral Cortex</i>, 309 <a href="https://doi.org/10.1093/cercor/bhab309">https://doi.org/10.1093/cercor/bhab309</a><br><br>
+17. <b> Blanco-Elorrieta, E., </b> & Caramazza, A., (2021). On the need of theoretically guided approaches to possible bilingual advantages: an evaluation of the potential loci in the language and executive control systems. <i>Neurobiology of language </i>, 1-16. <a href="https://doi.org/10.1162/nol_a_00041">https://doi.org/10.1162/nol_a_00041</a><br><br>
+16. Honari-Jahromi, M., Chouinard,  B., <b> Blanco-Elorrieta, E., </b> Pylkk&auml;nen, L.,  & Fyshe, A., (2021). Neural representation of words within phrases: Temporal evolution of color-adjectives and object-nouns during simple composition.<i> Plos One </i>, 16.3 (2021): e0242754. <a href="https://doi.org/10.1371/journal.pone.0242754">https://doi.org/10.1371/journal.pone.0242754</a><br><br>
+15. <b> Blanco-Elorrieta, E., </b> & Caramazza, A. (2021). A common selection mechanism at each linguistic level in bilingual and monolingual language production.<i>Cognition</i> 104625. <a href="https://doi.org/10.1016/j.cognition.2021.104625">https://doi.org/10.1016/j.cognition.2021.104625</a><br><br>						
+14. <b> Blanco-Elorrieta, E.*, </b> Gwilliams, L.*, Marantz, A., & Pylkk&auml;nen, L. (2020). Adaptation to mis-pronounced speech: evidence for a prefrontal-cortex repair mechanism.<i> Nature Scientific Reports</i>, 11, 97(2011) <a href="https://doi.org/10.1038/s41598-020-79640-0">https://doi.org/10.1038/s41598-020-79640-0</a> <br><br>
+13. <b> Blanco-Elorrieta, E.</b>, Ding, N., Pylkk&auml;nen, L., & Poeppel, D. (2020). Understanding requires tracking: Noise and knowledge interact in bilingual language comprehension.<i>Journal of Cognitive Neuroscience</i> 32(10), 1975-1983 <a href="https://doi.org/10.1162/jocn_a_01610">https://doi.org/10.1162/jocn_a_01610</a><br><br>		
+12. Liu, H., Zhang, Y., <b> Blanco-Elorrieta, E., </b> Hea, Y., Chen, B. (2019). Role of proactive control on subcomponents of language control: Evidence from trilinguals. <i> Cognition </i> 194, 104055 <a href="https://doi.org/10.1016/j.cognition.2019.104055">https://doi.org/10.1016/j.cognition.2019.104055</a><br><br>	
+11. <b> Blanco-Elorrieta, E.</b>, & Pylkk&auml;nen, L. (2018). Ecological validity in bilingualism research and the bilingual advantage.<i> Trends in Cognitive Sciences</i> 22(12), 1117-1126 <a href="https://doi.org/10.1016/j.tics.2018.10.001">https://doi.org/10.1016/j.tics.2018.10.001</a><br><br>				
+10. <b> Blanco-Elorrieta, E.</b>, Emmorey, K., & Pylkk&auml;nen, L. (2018). Language switching decomposed through MEG and evidence from bimodal bilinguals. <i> PNAS </i> 115.39 (2018): 9708-9713 <a href="https://doi.org/10.1073/pnas.1809779115">https://doi.org/10.1073/pnas.1809779115</a><br><br>		
+9. <b> Blanco-Elorrieta, E.</b>, Kastner, I., Emmorey, K., & Pylkk&auml;nen, L. (2018). A shared neurobiology for building phrases in signed and spoken language.<i> Scientific Reports </i> 8, 5492 <a href="https://doi.org/10.1038/s41598-018-23915-0">https://doi.org/10.1038/s41598-018-23915-0</a><br><br>
+8. <b>Blanco-Elorrieta, E.</b>, Ferreira, S.V., Del Prato, P., & Pylkk&auml;nen, L. (2017). The priming of Basic Combinatory Responses in MEG.<i> Cognition </i> 70, 49-63 <a href="https://doi.org/10.1016/j.cognition.2017.09.010">https://doi.org/10.1016/j.cognition.2017.09.010</a><br><br>
+7. Fyshe, A., <b>Blanco-Elorrieta, E. </b> & Pylkkänen, L. (2017). The neural representation of concepts during composition. <i>CCN</i> <a href="https://EstiBlancoElorrieta.github.io/Fysche_BlancoElorrieta_Pylkkanen.pdf">[pdf]</a><br><br>		
+6. <b>Blanco-Elorrieta, E. </b> Emmorey, K., & Pylkkänen, L. (2017). Decoding Language Switching in the Bilingual Brain: evidence from simultaneous speech and sign production. <i>CCN</i> <a href="https://EstiBlancoElorrieta.github.io/Paper_CCN.pdf">[pdf]</a><br><br>
+5. <b>Blanco-Elorrieta, E.</b>, & Pylkk&auml;nen, L. (2017). Bilingual language switching in the lab vs. in the wild: The spatio-temporal dynamics of adaptive language control.<i> J. Neuroscience</i>, 37(37), 9022-9036 <a href="https://doi.org/10.1523/JNEUROSCI.0553-17.2017">https://doi.org/10.1523/JNEUROSCI.0553-17.2017</a><br><br>
+4. <b>Blanco-Elorrieta, E.</b> & Pylkk&auml;nen, L. (2016). Bilingual language control in perception vs. action. <i> J. Neuroscience </i> 36(2): 290-301 <a href="https://doi.org/10.1523/JNEUROSCI.2597-15.2016">https://doi.org/10.1523/JNEUROSCI.2597-15.2016</a><br><br>
+3. <b>Blanco-Elorrieta, E. </b> & Pylkk&auml;nen, L. (2015).  Composition of complex numbers: Delineating the computational role of the left anterior temporal lobe.<i> NeuroImage </i>124(Pt A):194-203 <a href="https://doi.org/10.1016/j.neuroimage.2015.08.049">https://doi.org/10.1016/j.neuroimage.2015.08.049</a><br><br>
+2. <b>Blanco Elorrieta, E. </b> & Pylkk&auml;nen, L. (2015). Brain bases of language selection: MEG evidence from Arabic-English bilingual language production. <i> Frontiers in Human Neuroscience, 9:27 </i> <a href="https://doi.org/10.3389/fnhum.2015.00027">https://doi.org/10.3389/fnhum.2015.00027</a><br><br>
+1. Pylkk&auml;nen, L., Bemis, D.K., & <b>Blanco-Elorrieta, E.</b> (2014).  Building phrases in language production: An MEG study of simple composition. <i>Cognition </i>, 133, 371-384 <a href="https://doi.org/10.1016/j.cognition.2014.07.001">https://doi.org/10.1016/j.cognition.2014.07.001</a><br><br>
+      </p>
     </div>
-  </div>    
-  
+  </div>
 
-  
- <!-- Invited talks section -->
-  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="presentations">
-    <div class="w3-content" style="max-width:600px">
-      <h4 class="w3-center"><b>Invited talks</b></h4>
-    <p> 
+  <!-- Invited Talks -->
+  <div class="w3-container w3-light-grey content-section" id="presentations">
+    <div class="w3-content">
+      <h4 class="w3-center"><b>Invited Talks</b></h4>
+      <p>
+        <b>2025</b><br>
+        The neurobiology of bilingualism. Waseda University Psycholinguistics Workshop, Tokyo, Japan.<br>
+        The neurobiology of bilingualism: insights from neuroimaging and neuropsychology. Keynote Talk, Theoretical East Asian Psycholinguistics, Tokyo, Japan.<br>
+        The neurobiology of bilingualism: insights from neuroimaging and neuropsychology. Communicative Sciences and Disorders Colloquium, NYU.<br>
+        The neurobiology of bilingualism: insights from neuroimaging and neuropsychology. Neuroscience Graduate Program Colloquium, UCSD.<br>
+        The neurobiology of bilingualism: theory and clinical implications. Language and Communicative Disorders Speaker Series, SDSU.<br>
+        Grounds, evidence, and implications of a unified bilingual mind. Keynote Talk, ATOM Conference, Universitat Autonoma de Barcelona.<br><br>
 
-	    	<h3>2025</h3> 
-<b>Blanco-Elorrieta, E. </b>(2025). The neurobiology of bilingualism. <i> Invited Talk</i> at Waseda University Psycholinguistics Workshop, Tokyo, Japan.<br><br>	      	    
-<b>Blanco-Elorrieta, E. </b>(2025). The neurobiology of bilingualism: insights from neuroimaging and neuropsychology. <i> Keynote Talk</i> at the 5th International Conference on Theoretical East Asian Psycholinguistics, Tokyo, Japan.<br><br>	      
-<b>Blanco-Elorrieta, E. </b>(2025). The neurobiology of bilingualism: insights from neuroimaging and neuropsychology. <i> Department of Communicative Sciences and Disorders Colloquium Series</i>, New York University, USA.<br><br>	  
-<b>Blanco-Elorrieta, E. </b>(2025). The neurobiology of bilingualism: insights from neuroimaging and neuropsychology. <i> Neuroscience Graduate Program Colloquium</i>, University of California San Diego, California, USA.<br><br>	  
-<b>Blanco-Elorrieta, E. </b>(2025). The neurobiology of bilingualism: theory and clinical implications. <i> Language and Communicative Disorders Speaker Series</i>, San Diego State University, California, USA.<br><br>	  
-<b>Blanco-Elorrieta, E. </b>(2025). Grounds, evidence, and implications of a unified bilingual mind<i>Keynote Talk</i> at Adaptations to Multilingualism and the Role of Linguistic Proximity (ATOM) Conference</i>, Universitat Autonoma de Barcelona, Barcelona, Catalunya<br><br>	  
+        <b>2024</b><br>
+        The inner workings of the bilingual mind. USA & Spain Bridge for Neurosciences, NYU.<br>
+        The neurobiology of bilingualism: theory and clinical implications. Speech-Language-Hearing Sciences Colloquium, CUNY Graduate Center.<br>
+        The neurobiology of bilingualism: theory and clinical implications. Invited Speaker, SYNC Linguistics Conference, USA.<br><br>
 
-	    
-	    	<h3>2024</h3> 
-<b>Blanco-Elorrieta, E. </b>(2024). The inner workings of the bilingual mind. <i>USA & Spain Bridge for the Neurosciences Colloquium</i>, King Juan Carlos Center, New York, USA.<br><br>	  
-<b>Blanco-Elorrieta, E. </b>(2024). The neurobiology of bilingualism: theory and clinical implications. <i>Speech-Language-Hearing Sciences Colloquium</i>, CUNY Graduate Center, New York, USA.<br><br>	  
-<b>Blanco-Elorrieta, E. </b>(2024). The neurobiology of bilingualism: theory and clinical implications. <i>Invited Speaker</i>, Stony Brook, Yale, NYU & CUNY (SYNC) Linguistics Conference, USA.<br><br>	  
+        <b>2023</b><br>
+        Multilingualism and gender in research. Keynote, University of Mondragon.<br>
+        What is the bilingual brain? Plenary Talk, AMLaP Conference, Donostia-San Sebastian.<br>
+        Neural bases of bilingualism in the wild. Keynote, International Symposium of Psycholinguistics, Vitoria-Gasteiz.<br>
+        Bilingualism, brain damage and rehabilitation. Colloquium, Donostia International Physics Center.<br>
+        How does the bilingual brain process language? Keynote, NYUAD Institute.<br><br>
 
-	    
-	    	<h3>2023</h3> 
-<b>Blanco-Elorrieta, E. </b>(2023). Multilingualism and gender in the research world. <i>Keynote Speaker </i>at the 2025-2029 Strategic Plan Development Workshop, University of Mondragon, Basque Country.<br><br>
-<b>Blanco-Elorrieta, E. </b>(2023). What is the bilingual brain? <i>Plenary Talk</i>, Architectures and Mechanisms for Language Processing AMLaP Conference, Donostia-San Sebastian, Basque Country.<br><br>
-<b>Blanco-Elorrieta, E. </b>(2023). The neural bases of bilingualism in the wild.  <i>Keynote Speaker</i>, XVI International Symposium of Psycholinguistics, Vitoria-Gasteiz, Basque Country.  <a href="https://ehutb.ehu.eus/video/64947077af1923e375734726">Available here.</a><br><br>
-<b>Blanco-Elorrieta, E. </b>(2023). Bilingualism, brain damage and rehabilitation.  <i>Colloquium</i>, Donostia International Physics Center, Donostia-San Sebastian, Basque Country. <a href="https://www.youtube.com/watch?v=bBHDWOqrZu4">Available here.</a><br><br>
-<b>Blanco-Elorrieta, E. </b>(2023). How does the bilingual brain process language? <i>Perspectives on Multilingualism Roundtable</i>, Keynote Speaker, NYUAD Institute, New York, USA. <a href="https://www.youtube.com/watch?v=aMa63gnZ4Ww">Available here.</a> <br><br>
+        <b>2022</b><br>
+        Mapping cortical lesions and communicative deficits in bilingual aphasia. Nairobi, Kenya.<br>
+        Towards a comprehensive neurobiology of language. Dartmouth College.<br>
+        Towards a more inclusive neurobiology of language. Johns Hopkins University.<br>
+        Towards a more inclusive neurobiology of language. Delaware University.<br>
+        Towards comprehensive neurobiology of language. NYU Cognition & Perception Seminar.<br>
+        Towards a more inclusive neurobiology of language. Princeton University.<br>
+        The multilingual brain. University of Texas Rio Grande Valley.<br>
+        Gender non-conformity, inclusivity, and academia. University of Oslo.<br>
+        Towards an inclusive neurobiology of Language. University of Michigan.<br><br>
 
-	    
-	<h3>2022</h3> 
-<b>Blanco-Elorrieta, E. </b>(2022). Mapping cortical lesions and communicative deficits in bilingual aphasia. <i>Dementia and Alzheimer in Low and Middle Income Countries</i>, Nairobi, Kenya.<br><br>	    
-<b>Blanco-Elorrieta, E. </b>(2022). Towards a comprehensive neurobiology of language. <i>Cognitive Science Program Weekly Speaker Series</i>, Dartmouth College, Hanover, USA.<br><br>	  
-<b>Blanco-Elorrieta, E. </b>(2022). Towards a more inclusive neurobiology of language. <i>Cognitive Science Seminar</i>, Johns Hopkins University, Baltimore, USA.<br><br>	  
-<b>Blanco-Elorrieta, E. </b>(2022). Towards a more inclusive neurobiology of language. <i>Language and Cognitive Science Seminar</i>, Delaware University, USA. <br><br>	   
-<b>Blanco-Elorrieta, E. </b>(2022). Towards comprehensive neurobiology of language. <i>Cognition and Perception Seminar</i>, New York University, USA. <br><br>	
-<b>Blanco-Elorrieta, E. </b>(2022). Towards a more inclusive neurobiology of language. <i>Princeton Neuroscience Institute Seminar Series</i>, Princeton University, USA. <br><br>	
-<b>Blanco-Elorrieta, E. </b>(2022). The multilingual brain. <i>Neuroscience Research Seminar Series</i>, University of Texas Rio Grande Valley, USA. <br><br>	
-<b>Blanco-Elorrieta, E. </b>(2022). Gender non-conformity, inclusivity, and academia. <i>Intersectional Experiences in Academia</i>, University of Oslo, Norway. <br><br>	
-<b>Blanco-Elorrieta, E. </b>(2022). Towards an inclusive neurobiology of Language. <i>Cognitive Area Talk</i>, University of Michigan, Ann Harbor, USA. <br><br>	
+        <b>2021</b><br>
+        An ecologically valid neurobiology of multilingualism. University of Florida.<br>
+        Language-specific and language-general neural mechanisms in bilingual aphasic patients. Boston University.<br>
+        Towards an ecologically valid neurobiology of language. Glushko Award Talk, CogSci Society.<br>
+        Bilingualism and Cognitive Reserve and Resilience. NIH Workshop.<br>
+        Towards an ecologically valid neurobiology of bilingualism. UC Irvine.<br>
+        Towards an ecologically valid neurobiology of bilingualism. Young Scholar Speaker Series, Penn State.<br><br>
 
-	    
-	<h3>2021</h3>  
-	     	    
-<b>Blanco-Elorrieta, E. </b>(2021). An ecologically valid neurobiology of multilingualism. <i>Language and Brain Talk Series</i>, University of Florida, USA. <a href="https://www.youtube.com/watch?v=mpgX_nzHIfc">Available here.</a> <br><br>	
-<b>Blanco-Elorrieta, E. </b>(2021). Language-specific and language-general neural mechanisms in bilingual aphasic patients.<i> Aphasia Community Group</i>, Boston University, USA.<br><br>
-<b>Blanco-Elorrieta, E. </b>(2021). Towards an ecologically valid neurobiology of language <Glushko Dissertation Award Talk</i>, Cognitive Science Society Meeting, USA. <a href="https://www.youtube.com/watch?v=0eBY1Ufeys4">Available here.</a><br><br>   
-<b>Blanco-Elorrieta, E. </b>(2021). Bilingualism and Cognitive Reserve and Resilience. <i>NIH National Institute on Aging's Virtual Workshop</i>, NIH Institutes, DC, USA. <a href="https://videocast.nih.gov/watch=41551">Available here at 2:31:00.</a><br><br>	    	    
-<b>Blanco-Elorrieta, E. </b>(2021). Towards an ecologically valid neurobiology of bilingualism.<i> Department of Language Science Colloquium</i>, University of California Irvine, USA.<br><br>	      
-<b>Blanco-Elorrieta, E. </b>(2021). Towards an ecologically valid neurobiology of bilingualism.<i> Plenary speaker: Young Scholar Speaker Series</i>, Pennsylvania State University, USA.<br><br>	    
-	    
-    <h3>2020</h3>
-	
-<b>Blanco-Elorrieta, E. </b>(2020). Bilingualism, language and cognition. <i>Meet the author series</i>, Linguistics Department, NYU, USA.<br><br>	    	    
-<b>Blanco-Elorrieta, E. </b>(2020). Bilingualism: questions, answers, and future directions. Darmouth University, New Hampshire, USA.<br><br>	    
-<b>Blanco-Elorrieta, E. </b>(2020). Towards an ecologically valid neurobiology of bilingualism. Fedorenko Lab, MIT, Cambridge, USA.<br><br>
-<b>Blanco-Elorrieta, E. </b>(2020). The true advantage of multilingualism. <a href="https://www.ted.com/talks/esti_blanco_elorrieta_el_impacto_del_bilinguismo_en_el_cerebro">TEDx Talk</a> Tarragona, Spain.<br><br>
-<b>Blanco-Elorrieta, E. </b>(2020). The challenges of bilingual speech comprehension. Mesgarani lab, Columbia University, USA.<br><br>
-<b>Blanco-Elorrieta, E. </b>(2020). Growth in times of crisis. Entre cuatro paredes. Expatriados & Co., New York, USA.<br><br>
-<b>Blanco-Elorrieta, E. </b>(2020). The Neurobiology of Multilingualism. Linguistics Colloquium. Cornell University, USA.<br><br>
+        <b>2020</b><br>
+        Bilingualism, language and cognition. Meet the Author, NYU.<br>
+        Bilingualism: questions and future directions. Dartmouth University.<br>
+        Towards an ecologically valid neurobiology of bilingualism. MIT, Fedorenko Lab.<br>
+        The true advantage of multilingualism. TEDx Tarragona, Spain.<br>
+        Challenges of bilingual speech comprehension. Columbia University.<br>
+        Growth in times of crisis. Entre cuatro paredes, NYC.<br>
+        The Neurobiology of Multilingualism. Cornell University.<br><br>
 
-<h3>2019</h3>
-	
-<b>Blanco-Elorrieta, E.</b> (2019). The challenges of comprehending bilingual speech in noise. British Academy of Cognitive Neuroscience meeting, Cambridge, UK.<br><br>		
-		
-<h3>2018</h3>
-	
-<b>Blanco-Elorrieta, E.</b> (2018). The neurobiology of bilingualism: Insight from MEG. The bilingual mind seminars. University of the Basque Country.<br><br>
-		
-<b>Blanco-Elorrieta, E.</b> (2018). The neurobiology of bilingualism: Insight from MEG. Language and Cognition Colloquium. Harvard University, USA.<br><br>		
-		
-<b>Blanco-Elorrieta, E.</b> (2018). The neurobiology of bilingualism: Insight from MEG. Cognitive Psychology Brown Bag. University of California San Diego, USA.<br><br>
+        <b>2019</b><br>
+        Challenges of comprehending bilingual speech in noise. British Academy of Cognitive Neuroscience, Cambridge, UK.<br><br>
 
-<h3>2017</h3>
-		
-<b>Blanco-Elorrieta, E. </b>The neurocognition of bilingualism. Young Leaders of
-the Americas Initiative (YLAI), New York, USA.<br><br>	
+        <b>2018</b><br>
+        The neurobiology of bilingualism: Insight from MEG. University of the Basque Country.<br>
+        The neurobiology of bilingualism: Insight from MEG. Harvard University.<br>
+        The neurobiology of bilingualism: Insight from MEG. UC San Diego.<br><br>
 
-  <h3>2016</h3>
+        <b>2017</b><br>
+        The neurocognition of bilingualism. Young Leaders of the Americas Initiative (YLAI), NYC.<br><br>
 
-<b> Blanco-Elorrieta, E. </b> (2016). Brain bases of bilingual language selection and switching: Evidence from production and comprehension. 
-Psycholinguistics Supper. Graduate Center of the City University of New York (CUNY), New York, USA.<br><br> 
-	
-    
-    
-<!-- Funding section -->
-  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="funding">
-    <div class="w3-content" style="max-width:600px">
-      <h4 class="w3-center"><b>Awards and Scholarships</b></h4>
-    <p> 
-    	<b>2021:</b> Cognitive Science Society: Glushko Dissertation award.<br>
-	<b>2021:</b> NYU-wide Outstanding Dissertation award.<br>
-	<b>2021:</b> GSAS Outstanding Dissertation award.<br>
-	<b>2020:</b> Ben Barres Fellowship.<br>
-	<b>2020:</b> Coons/Leibowitz Graduate Student Teaching Award.<br>
-	<b>2019:</b> Forbes magazine: 30 under 30 in Science.<br>	
-	<b>2019:</b> Martin Braine Dissertation fellowship in Psychology.<br>
-	<b>2018:</b> The Dingwall Foundation: Dissertation Fellowship in the Cognitive, Clinical, and Neural Foundations of Language.<br>
-	<b>2018:</b> New York University: Dean's Student travel award.<br>
-	<b>2017:</b> Society of the Neurobiology of Language predoctoral fellow merit award.<br>
-<b>2017:</b> Woodcock Institute Grant Research Award.<br>
-<b>2016:</b> Helmsley Fellowship for cross-disciplinary research.<br>
-<b>2016:</b> New York University: Dean's Student Travel Grant.<br>
-<b>2015:</b> Neurobiology of Language Conference: Travel Award.<br>
-<b>2015:</b> MacCracken Fellowship for Doctoral studies.<br>
-<b>2014:</b> La Caixa Foundation: fellowship for Graduate Studies in North America (4% success rate).<br>
-<b>2012:</b> Basque Center on Cognition, Brain and Language: academic merit scholarship.<br>
-<b>2011:</b> Basque Government: fellowship for undergraduate research projects.<br>
-<b>2010:</b> University of Deusto: grant for undergraduate research projects.<br>
-<b>2008:</b> Basque Government: Distinguished Academic scholarship. <br>
+        <b>2016</b><br>
+        Brain bases of bilingual language selection and switching. CUNY Graduate Center, NYC.<br>
+      </p>
     </div>
-  </div>    
-<!-- Scientific Outreach section -->
-  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="outreach">
-    <div class="w3-content" style="max-width:600px">
+  </div>
+
+  <!-- Funding -->
+  <div class="w3-container w3-light-grey content-section" id="funding">
+    <div class="w3-content">
+      <h4 class="w3-center"><b>Funding and Awards</b></h4>
+      <p>
+        2021: Glushko Dissertation award, CogSci Society.<br>
+        2021: NYU-wide Outstanding Dissertation award.<br>
+        2021: GSAS Outstanding Dissertation award.<br>
+        2020: Ben Barres Fellowship.<br>
+        2020: Coons/Leibowitz Graduate Student Teaching Award.<br>
+        2019: Forbes 30 under 30 in Science.<br>
+        2019: Martin Braine Dissertation fellowship.<br>
+        2018: Dingwall Dissertation Fellowship.<br>
+        2018: NYU Dean's travel award.<br>
+        2017: Neurobiology of Language predoctoral fellow award.<br>
+        2017: Woodcock Institute Grant.<br>
+        2016: Helmsley Fellowship.<br>
+        2016: NYU Dean's Student Travel Grant.<br>
+        2015: Neurobiology of Language Conference Travel Award.<br>
+        2015: MacCracken Fellowship.<br>
+        2014: La Caixa Foundation Fellowship.<br>
+        2012: BCBL academic merit scholarship.<br>
+        2011: Basque Government fellowship.<br>
+        2010: University of Deusto grant.<br>
+        2008: Basque Government Distinguished Academic scholarship.<br>
+      </p>
+    </div>
+  </div>
+
+  <!-- Outreach -->
+  <div class="w3-container w3-light-grey content-section" id="outreach">
+    <div class="w3-content">
       <h4 class="w3-center"><b>Scientific Outreach</b></h4>
-    <p> 
-
-2024:	Scientific Outreach Talk at "Sin Fronteras" Educational Institute in Madrid, Spain. <br> 
-2023:	Scientific Outreach Talk on Bilingualism and Child Development at Montessori School in Williamsburg, NYC. <br> 
-2023:	Interview on La mecanica del Caracol Science radio program (available <a href="https://www.eitb.eus/es/radio/radio-euskadi/programas/la-mecanica-del-caracol/detalle/9300286/investigacion-del-cerebro-bilingue-regresa-bilbao-zientzia-plaza-y-naukas-hitos-del-telescopio-james-webb/">here</a>, in Spanish). <br> 
-2023: 	Interview on language evolution in El Diario Vasco newspaper (available <a href="https://www.diariovasco.com/gipuzkoa/cerebro-limite-hora-aprender-idiomas-20230901064536-nt.html">here</a>, in Spanish). <br> 
-2023:	'De ondas de sonido a significado: como procesa nuestro cerebro los idiomas’. Scientific Divulgation Talk at the University of the Basque Country. <br>
-2023:	Interview on the bilingual brain in Berria newspaper (available <a href="https://www.berria.eus/paperekoa/2282/038/001/2023-03-24/elebitasunaren-kontrako-iritziek-ez-dute-zerikusirik-zientziarekin.amp.html">here</a>, in Basque). <br> 
-2023:	Radio program at EITB discussing the bilingual brain (available <a href="https://www.eitb.eus/es/radio/radio-euskadi/programas/la-mecanica-del-caracol/detalle/9144695/el-ipcc-pide-que-se-tomen-medidas-ambiciosas-y-urgentes-en-mitigacion-y-adaptacion-ante-cambio-climatico/">here</a> in Spanish).<br>	    
-2023:	Podcast episode on the psychology, neuroscience and philosophy of multilingualism (available <a href="https://open.spotify.com/episode/4FNOX6zADbFlyJacdWiotI?si=bqv_IRSGSLasxqzijlqetQ&nd=1">here</a>, in English).<br>
-2023:	‘How Does the Bilingual Brain Process Language?’ Public talk at NYUAD Institute. (available <a href="https://vimeo.com/manage/videos/799660457">here</a>, in English). <br>    
-2023:	‘Como funciona el cerebro bilingüe?’ Talk at San Telmo Museum in San Sebastian. (available <a href="https://www.youtube.com/watch?v=Ge4z2APYY2E&feature=youtu.be">here</a>, in Spanish). <br>  
-2022:	TV Interview on the effects on multilingualism on the brain for EITB (available <a href="https://www.eitb.eus/eu/telebista/programak/hitzokei/bideoak/osoa/9008355/egia-al-da-elebidunek-elebakarrek-baino-motelago-ikasten-dutela/">here</a>, in Basque).<br>
-2022:	Interview on multilingualism, language politics and science in El Español newspaper (available <a href="https://www.elespanol.com/ciencia/20221002/filologa-universidad-harvard-estudiando-trastorno-bruce-willis/706929740_0.html">here</a>, in Spanish).<br>
-2021:	Panelist and Organizer, Early Career Event, Society for the Neurobiology of Language.<br>
-2021:	Speaker, Doctoral Student Welcome Event, New York University.<br>
-2021:	TED in Spanish Podcast episode (available <a href="https://podcasts.apple.com/lu/podcast/ventajas-de-hablar-m%C3%A1s-de-un-idioma-esti-blanco-elorrieta/id1368017834?i=1000514352008&l=de"> here</a>, in Spanish).<br>
-2021:	Interview in Archiletras bi-monthly scientific magazine (available <a href="https://www.archiletras.com/actualidad/esti-blanco-elorrieta/">here</a>, in Spanish).<br>
-2021:	Baipasa: weekly contribution to science radio program (available <a href="https://www.eitb.eus/eu/irratia/euskadi-irratia/programak/baipasa/osoa/8330321/protesi-neuromuskulueskeletalei-esker-benetan-ukitzen-egongo-balira-moduko-sentsazioa-dute-pertsonek/">here</a> in Basque).<br>
-2020:	Interview in a TV episode of ‘The brain hunter’ (available <a href=https://www.rtve.es/m/alacarta/videos/el-cazador-de-cerebros/donde-nacen-idiomas/5897642/>here</a> in Spanish).<br>
-2020:	TED Talk in Spain, 2020 (available  <a href="https://www.youtube.com/watch?v=YwtoS3AxN-I">here</a>, in Spanish).<br>
-2020:	Interview on the multilingual brain in Onda Cero radio. Available <a href="https://www.ondacero.es/programas/julia-en-la-onda/programas-completos/30012020_202001305e331a9e0cf28bb05d0a7f73.html">here</a> in Spanish (minute 26 onwards).</a><br>
-2020:	Interview on the architecture of the multilingual brain in RTVE Spanish national radio. Available <a href="https://www.rtve.es/alacarta/audios/marca-espana/marca-espana-joven-cientifica-reconocida-como-forbes-30-under-30/5523857">here</a><br>
-2019:	‘How to build a career in Science’ panelist; Young Leaders of the America Initiative (YLAI).<br>
-2019:	Coverage of my multilingualism research in the <i>Inspire</i> series by Euronews (available <a href="https://www.youtube.com/watch?v=AyoZ-Q4t28c">here</a> in English).<br>
-
-<!-- (Trans)gender advocacy section -->
-<div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="advocacy">
-<div class="w3-content" style="max-width:600px">
-<h4 class="w3-center"><b>(Trans)gender advocacy</b></h4>
- <p> 	
-
-2025:	Keynote Speaker at UCL: LGBTQ+ Research Showcase.</a><br>
-2024:	Interview with NBC Today on Gender Affirming Voice Treatment (available <a href="https://www.today.com/health/gender-affirming-voice-therapy-rcna155629">here.</a><br>
-2022:	Intersectional Experiences in Academia Workshop at the University of Oslo: Panelist.<br>	    
-2021:	Spanish ministry for Gender Equality: advisory committee for gender equality policy.<br>
-2021:	‘Identity, language, and the future’ Twitch interview for ‘The Future Game’ (available <a href="https://www.twitch.tv/videos/1177461195">here</a>, in Basque).<br>
-2021:	Bayer pharmaceutical Latin-American branch: Pride event panelist.<br>
-2021:	‘Non-binary’ feature documentary on trans experience (available <a href="https://vimeo.com/572965625/4d9051d298">here</a>, English subtitles).<br>
-2020:	ELA Basque Trade Union: Pride event panelist.<br>
-2020:	National Organization of Gay and Lesbian Scientists and Technical Professionals: Speaker, career panel.<br>
-2020:	Harvard Women in STEM Initiative, Mentor.<br>
-2019:	The Lesbian, Gay, Bisexual & Transgender Community Center: Panelist, ‘Being trans in Academia’.<br>
-
-	    
-<div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="Media">
-<div class="w3-content" style="max-width:600px">
-<h4 class="w3-center"><b>Media</b></h4>
-<p> 	
-
-2023:	Newspaper interview at Diario Vasco on language (available <a href="https://www.diariovasco.com/gipuzkoa/cerebro-limite-hora-aprender-idiomas-20230901064536-nt.html">here,</a> in Spanish. <br>
-2023: 	Radio interview at Radio Vitoria on how the human brain processes language (available <a href="https://www.eitb.eus/es/radio/radio-vitoria/programas/dialogos/audios/detalle/9220074/neuroimplantes-fusion-cerebromaquijna-como-entiende-nuestro-cerebro-idioma/">here</a>, in Spanish). <br> 
-2023:	Interview on Nius Diario newspaper on the myths around bilingualsim and the brain. Available <a href="https://www.niusdiario.es/ciencia-y-tecnologia/ciencia/20230506/entrevista-esti-blanco-elorrieta-espanola-habla-cuatro-idiomas-investiga-bilingueismo-harvard-hay-que-derribar-creencias-falsas_18_09430101.html">here,</a> in Spanish. <br>
-2023:	Interview in The New York Times on bilingualism and aging. Available <a href="https://www.nytimes.com/2023/04/28/health/bilingualism-memory-dementia.html">here,</a> in English. <br>
-2023:	Interview in Berria newspaper on the bilingual brain. Available <a href="https://www.berria.eus/paperekoa/2282/038/001/2023-03-24/elebitasunaren-kontrako-iritziek-ez-dute-zerikusirik-zientziarekin.htm">here,</a> in Basque. <br>
-2023:	Interview in ARGIA magazine on the bilingual brain. Available <a href="https://www.argia.eus/argia-astekaria/2823/esti-blanco-elorrieta-tartekoari-adi">here,</a> in Basque. <br>
-	 
- <b> Coverage of my research and inclusion in the Forbes 30 under 30 list </b> <br><br>
-	 
-2020: ‘Bilingual individuals’ interview in El Pais newspaper. Available <a href="https://elpais.com/elpais/2020/01/27/ciencia/1580127774_061342.html">here</a> in Spanish.<br>
-2020:  <i>Genious of a thousand languages</i> interview in Deia newspaper. Available <a href="https://www.deia.eus/vivir-on/historias-de/2020/01/24/profesion-genio-mil-lenguajes-historias/1013567.html">here</a> in Spanish<br>
-2020:	Interview on the Neurobiology of multilingualism in radio COPE. Available <a href="https://www.cope.es/programas/la-tarde/audios/tarde-04-02-2020-1700-1800-horas-20200204_997089">here</a> in Spanish (minute 20 onwards).<br>
-2020:	Interview in EITB Basque national radio <a href="https://www.eitb.eus/eu/irratia/euskadi-irratia/programak/baipasa/audioak/osoa/7024549/baipasa-20200211/?utm_campaign=General&utm_medium=PODCAST&utm_source=BAIPASA">1 hour 9 minute onwards.</a><br>
-	 
-	<br><br>
-	
- 
-	<b>International coverage of the Scientific reports article on the shared neural bases of sign and speech</b> <br><br>
-	         
-2018:	On the American Association for the Advancement of Science (AAAS) news. Available <a href=https://eurekalert.org/pub_releases/2018-04/nyu-wws032918.php> here</a>, in English.<br>
-2018: 	On the Italian version of web of science. Available <a href=http://www.lescienze.it/news/2018/04/04/news/lingua_segni_parlato_stessi_circuiti_neurali-3927543>here</a>, in Italian. <br>
-2018: 	Russian N1 news channel's report can be found <a href=https://nplus1.ru/news/2018/04/06/spoken-and-signed>here</a>, in Russian.<br>
-2018:	‘Four amazing discoveries you probably didn’t hear about this week’, NSF podcast. Available <a href="https://www.youtube.com/watch?v=-gsn6OdszCs">here</a>, in English).<br>
-	
-	<b>Coverage of the Journal of Neuroscience article on language switching in different conversational scenarios</b> <br><br>
-	 
-On Science Daily: <a href=https://www.sciencedaily.com/releases/2017/08/170830103726.htm> Is changing languages effortful for bilingual speakers? Depends on the situation </a><br>
-On Lukor magazine: <a href=http://www.lukor.net/2017/08/31/chatting-makes-it-easy-to-switch-languages> Chatting makes it easier to switch between languages</a><br>
-On Science Codex: <a href=http://www.sciencecodex.com/changing-languages-effortful-bilingual-speakers-depends-situation-614000> Is changing languages effortful for bilingual speakers? </a><br>
-On Health News Digest: <a href=http://www.healthnewsdigest.com/news/Research_270/Is-Changing-Languages-Effortful-for-Bilingual-Speakers.shtml> Is Changing Languages Effortful for Bilingual Speakers? </a><br>
-On Gears of Biz: <a href=http://gearsofbiz.com/is-changing-languages-effortful-for-bilingual-speakers-depends-on-the-situation/51308> Is changing languages effortful for bilingual speakers? Depends on the situation </a> <br>
-On Futurity news:  <a href=http://www.futurity.org/bilingual-people-switching-languages-1529412/?platform=hootsuite> Chatting makes it easy to switch languages </a>
-	 
-     <br><br>   <b>Coverage of my paper in the Journal of Neuroscience on language switching in perception vs. action. </b><br><br>
-	 
-	 The press release from NYUAD can be found<a href=http://nyuad.nyu.edu/en/news/research-innovation/2016/02/how-bilingual-brains-juggle-language.html> here.</a>
-<br>
-An article in the The Gulf Today:
-<a href=http://gulftoday.ae/portal/27290911-6c25-495c-b214-2315f5cbb95a.aspx> Bilingual brains more focused, reveals NYU Abu Dhabi research </a>
-<br>
-An article in Khaleej times:
-<a href=http://www.khaleejtimes.com/bilinguals-are-smarter-than-you-think> Bilinguals are smarter than you think</a>
-<br>
-An article in The National:
-<a href=http://www.thenational.ae/uae/education/abu-dhabi-study-sheds-new-light-on-benefits-of-children-being-bilingual> Abu Dhabi study sheds new light on benefits of children being bilingual</a>
-<br>
-An article in ZAWYA:
-<a href=https://www.zawya.com/story/NYU_Abu_Dhabi_researchers_reveal_function_of_bilingual_brain-WAM20160214091032136> NYU Abu Dhabi researchers reveal workings of the bilingual brain</a>
-<br>
-An article in United Arab Emirates News Agency:
-<a href=http://www.wam.ae/en/news/general/1395291564713.html> NYU Abu Dhabi researchers reveal workings of the bilingual brain </a>
-<br>
-An article in MSN News:
-<a href=http://www.msn.com/en-ae/news/world/nyu-abu-dhabi-study-shows-becoming-bilingual-depends-on-the-brain/ar-BBpvVaX> NYU Abu Dhabi study shows becoming bilingual depends on the brain</a>
-<br>
+      <p>
+        2024: Talk at "Sin Fronteras" Educational Institute, Madrid.<br>
+        2023: Talk at Montessori School, NYC.<br>
+        2023: Interview on La mecanica del Caracol, Spanish radio.<br>
+        2023: Interview in El Diario Vasco.<br>
+        2023: Scientific talk at University of the Basque Country.<br>
+        2023: Interview in Berria newspaper.<br>
+        2023: Radio program at EITB.<br>
+        2023: Podcast episode on multilingualism.<br>
+        2023: Public talk at NYUAD Institute.<br>
+        2023: Talk at San Telmo Museum, San Sebastian.<br>
+        2022: TV Interview, EITB.<br>
+        2022: Interview in El Español.<br>
+        2021: Panelist, SNL Early Career Event.<br>
+        2021: Speaker, NYU Welcome Event.<br>
+        2021: TED in Spanish Podcast episode.<br>
+        2021: Interview in Archiletras magazine.<br>
+        2021: Weekly contribution to Baipasa radio.<br>
+        2020: TV episode “The Brain Hunter”, RTVE.<br>
+        2020: TED Talk in Spain.<br>
+        2020: Interview in Onda Cero radio.<br>
+        2020: Interview in RTVE radio.<br>
+        2019: Panelist, Young Leaders of the America Initiative.<br>
+        2019: Euronews Inspire coverage.<br>
+      </p>
     </div>
-  </div>   
+  </div>
 
- 
-   
+  <!-- Advocacy -->
+  <div class="w3-container w3-light-grey content-section" id="advocacy">
+    <div class="w3-content">
+      <h4 class="w3-center"><b>(Trans)gender Advocacy</b></h4>
+      <p>
+        2025: Keynote, UCL LGBTQ+ Research Showcase.<br>
+        2024: NBC Today interview on Gender Affirming Voice Treatment.<br>
+        2022: Panelist, Intersectional Experiences, University of Oslo.<br>
+        2021: Advisory Committee, Spanish Ministry for Gender Equality.<br>
+        2021: Twitch interview “Identity, language, and the future”.<br>
+        2021: Bayer Pride event panelist.<br>
+        2021: Documentary “Non-binary” on trans experience.<br>
+        2020: Pride event, ELA Basque Trade Union.<br>
+        2020: NOGLSTP speaker.<br>
+        2020: Harvard Women in STEM Mentor.<br>
+        2019: Panelist, “Being trans in Academia”.<br>
+      </p>
+    </div>
+  </div>
 
-  <div class="w3-black w3-center w3-padding-24">Last updated 01/21/2024</div>
+  <!-- Media -->
+  <div class="w3-container w3-light-grey content-section" id="media">
+    <div class="w3-content">
+      <h4 class="w3-center"><b>Media</b></h4>
+      <p>
+        2023: Interview in Diario Vasco.<br>
+        2023: Radio interview at Radio Vitoria.<br>
+        2023: Interview in Nius Diario.<br>
+        2023: Interview in The New York Times.<br>
+        2023: Interview in Berria newspaper.<br>
+        2023: Interview in ARGIA magazine.<br>
+        2020: Interview in El País.<br>
+        2020: Interview in Deia.<br>
+        2020: Interview on radio COPE.<br>
+        2020: Interview in EITB Basque national radio.<br>
+        2018: Coverage in AAAS news, Lescienze, N1, NSF podcast.<br>
+        2017: Coverage of J. Neuroscience paper in Science Daily, Lukor, Science Codex.<br>
+        2016: Press release NYUAD, coverage in Gulf Today, Khaleej Times, The National, ZAWYA, UAE News Agency, MSN.<br>
+      </p>
+    </div>
+  </div>
 
+  <!-- Footer -->
+  <div id="footer" class="w3-center w3-padding-24">Last updated 01/21/2024</div>
+</div>
+
+<!-- JavaScript -->
 <script>
-// Script to open and close sidebar
 function w3_open() {
   document.getElementById("mySidebar").style.display = "block";
   document.getElementById("myOverlay").style.display = "block";
@@ -406,16 +315,29 @@ function w3_close() {
   document.getElementById("myOverlay").style.display = "none";
 }
 
-// Modal Image Gallery
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
+function showSection(sectionId) {
+  var sections = document.getElementsByClassName("content-section");
+  for (var i = 0; i < sections.length; i++) {
+    sections[i].style.display = "none";
+  }
+  document.getElementById(sectionId).style.display = "block";
+
+  // Adjust footer background to match section
+  var footer = document.getElementById("footer");
+  if (sectionId === "about") {
+    footer.className = "w3-dark-grey w3-center w3-padding-24";
+  } else {
+    footer.className = "w3-light-grey w3-center w3-padding-24";
+  }
+
+  w3_close();
 }
 
+// Show About by default
+window.onload = function() {
+  showSection('about');
+}
 </script>
-
 
 </body>
 </html>
