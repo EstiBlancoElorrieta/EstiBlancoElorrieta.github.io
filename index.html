@@ -77,43 +77,36 @@
     /* Overlay (phones) */
     #myOverlay { background: rgba(0,0,0,0.25); z-index: 2; }
 
+    /* --- mobile-only hero in About --- */
+    .mobile-hero{ display:none; text-align:center; margin:0 0 16px; }
+    .mobile-hero img{ width:140px; height:140px; border-radius:50%; object-fit:cover; }
+    .mobile-hero .name{ margin-top:10px; font-weight:700; font-size:20px; line-height:1.2; }
+
     /* ---------- RESPONSIVE RULES ---------- */
 
     /* Phones only (≤768px): drawer mode */
-/* Phones only (≤768px) */
-@media (max-width: 768px) {
-  .w3-main { margin-left: 0; }
-  .w3-sidebar { width: 280px; }
-  .topbar { display: block; position: sticky; top: 0; z-index: 4; }
+    @media (max-width: 768px) {
+      .w3-main { margin-left: 0; }            /* content not pushed */
+      .w3-sidebar { width: 280px; }           /* drawer width by default */
+      .topbar { display: block; position: sticky; top: 0; z-index: 4; }
 
-  /* already present: keeps text from showing behind the menu */
-  body.drawer-open .w3-main { display: none !important; }
+      /* When drawer is open on phones, hide main so text never sits behind the menu */
+      body.drawer-open .w3-main { display: none !important; }
 
-  /* NEW: make the drawer full-width when open, and remove the dim overlay */
-  body.drawer-open { overflow: hidden; }                /* stop background scroll */
-  body.drawer-open #mySidebar { width: 100vw !important; left: 0; box-shadow: none; }
-  body.drawer-open #myOverlay { display: none !important; }  /* no “there’s content behind” hint */
-}
+      /* Full-bleed drawer when open, remove overlay cue, and stop background scroll */
+      .mobile-hero{ display:block; }
+      body.drawer-open { overflow: hidden; }
+      body.drawer-open #mySidebar { width: 100vw !important; left: 0; box-shadow: none; }
+      body.drawer-open #myOverlay { display: none !important; }
+    }
 
-	  /* --- mobile-only hero in About --- */
-.mobile-hero{ display:none; text-align:center; margin:0 0 16px; }
-.mobile-hero img{ width:140px; height:140px; border-radius:50%; object-fit:cover; }
-.mobile-hero .name{ margin-top:10px; font-weight:700; font-size:20px; line-height:1.2; }
-
-@media (max-width:768px){
-  .mobile-hero{ display:block; }
-}
-@media (min-width:769px){
-  .mobile-hero{ display:none !important; }
-}
-
-
-    /* Desktop & tablets (>768px): classic layout, no overlay/drawer */
+    /* Desktop & tablets (>768px): classic layout, no overlay/drawer, hide mobile hero */
     @media (min-width: 769px) {
       .topbar { display: none !important; }
       #myOverlay { display: none !important; }
       #mySidebar { display: block !important; }  /* fixed sidebar always visible */
       .w3-main { margin-left: var(--sidebar-width); }
+      .mobile-hero{ display:none !important; }
     }
   </style>
 </head>
@@ -151,7 +144,6 @@
     <a href="#publications"  class="w3-bar-item w3-button sidebar-link" onclick="navigate('publications')">PUBLICATIONS</a>
     <a href="https://EstiBlancoElorrieta.github.io/CV_EBE.pdf" class="w3-bar-item w3-button" target="_blank" rel="noopener">CV</a>
     <a href="#presentations" class="w3-bar-item w3-button sidebar-link" onclick="navigate('presentations')">INVITED TALKS</a>
-    <a href="#funding"       class="w3-bar-item w3-button sidebar-link" onclick="navigate('funding')">FUNDING AND AWARDS</a>
     <a href="#outreach"      class="w3-bar-item w3-button sidebar-link" onclick="navigate('outreach')">SCIENTIFIC OUTREACH</a>
     <a href="#advocacy"      class="w3-bar-item w3-button sidebar-link" onclick="navigate('advocacy')">(TRANS)GENDER ADVOCACY</a>
     <a href="#media"         class="w3-bar-item w3-button sidebar-link" onclick="navigate('media')">MEDIA</a>
@@ -166,11 +158,12 @@
     <!-- About -->
     <section class="w3-container w3-dark-grey w3-text-light-grey content-section" id="about" aria-labelledby="about-title">
       <div class="w3-content">
-		     <!-- Mobile-only hero -->
-    <div class="mobile-hero" aria-hidden="true">
-      <img src="https://EstiBlancoelorrieta.github.io/headshot3.png" alt="Esti Blanco-Elorrieta">
-      <div class="name">Esti<br>Blanco-Elorrieta</div>
-    </div>
+
+        <!-- Mobile-only hero -->
+        <div class="mobile-hero" aria-hidden="true">
+          <img src="https://EstiBlancoelorrieta.github.io/headshot3.png" alt="Esti Blanco-Elorrieta">
+          <div class="name">Esti<br>Blanco-Elorrieta</div>
+        </div>
 
         <h1 id="about-title" class="w3-xxlarge" style="margin-top:0;"><b>About Me</b></h1>
         <p>I am an Assistant Professor of Psychology and Neural Science at New York University. 
@@ -226,84 +219,56 @@
         <p>
           <b>2025</b><br>
 40. <i>Colloquium.</i> Cognitive and Brain Science Lecture Series, Tufts University, USA (November).<br>
-39.<i> Early Career Award Speaker.</i> Society for the Neurobiology of Language (SNL), DC, USA (September).<br>
-38. <i>Keynote.</i> 2nd Conference in Clinical Linguistics, Baiona, France. (July).<br>
-37. <i>Keynote.</i> LOT Summer School on Linguistics, Antwerp, Belgium. (June).<br>
-36. <i>Keynote.</i> LGBTQ+ Science Research Showcase, UCL, London, UK. (June).<br>
-35. <i>Invited Speaker.</i> Waseda University Psycholinguistics Workshop, Tokyo, Japan. (April).<br>
-34. <i>Keynote.</i> 5th International Conference on Theoretical East Asian Psycholinguistics, Tokyo, Japan. (April).<br>
+39. <i>Early Career Award Speaker.</i> Society for the Neurobiology of Language (SNL), Washington, DC, USA (September).<br>
+38. <i>Keynote.</i> 2nd Conference in Clinical Linguistics, Baiona, France (July).<br>
+37. <i>Keynote.</i> LOT Summer School on Linguistics, Antwerp, Belgium (June).<br>
+36. <i>Keynote.</i> LGBTQ+ Science Research Showcase, UCL, London, UK (June).<br>
+35. <i>Invited Speaker.</i> Waseda University Psycholinguistics Workshop, Tokyo, Japan (April).<br>
+34. <i>Keynote.</i> 5th International Conference on Theoretical East Asian Psycholinguistics, Tokyo, Japan (April).<br>
 33. <i>Colloquium.</i> Concepts and Categories Colloquium, New York University, USA (March).<br>
 32. <i>Colloquium.</i> Department of Communicative Sciences and Disorders, New York University, USA (March).<br>
-31. <i>Colloquium.</i> Neuroscience Graduate Program, UC San Diego, USA. (February).<br>
-30. <i>Colloquium.</i> Language and Communicative Disorders Speaker Series, SDSU, USA. (February).<br>
-29. <i>Keynote.</i> Adaptations to Multilingualism and the Role of Linguistic Proximity. Universidad Autonoma de Barcelona, Catalunya (February).<br>
+31. <i>Colloquium.</i> Neuroscience Graduate Program, UC San Diego, USA (February).<br>
+30. <i>Colloquium.</i> Language and Communicative Disorders Speaker Series, SDSU, USA (February).<br>
+29. <i>Keynote.</i> Adaptations to Multilingualism and the Role of Linguistic Proximity, Universitat Autònoma de Barcelona, Catalunya (February).<br>
+<br>
           <b>2024</b><br>
-28. <i>Keynote.</i> Stony Brook, Yale, NYU & CUNY (SYNC) Linguistics Conference, USA. (December).<br>
-27. <i>Colloquium.</i> USA & Spain bridge for the neurosciences colloquium, King Juan Carlos Center, NY, USA. (October).<br>
-26. <i>Colloquium.</i> Speech-Language-Hearing Sciences, The Graduate Center of CUNY, USA. (October).<br>
-25. <i>Invited Speaker.</i> 2025-2029 Strategic Plan Development Workshop. University of Mondragon, Basque Country. (March).<br>
+28. <i>Keynote.</i> Stony Brook, Yale, NYU & CUNY (SYNC) Linguistics Conference, USA (December).<br>
+27. <i>Colloquium.</i> USA & Spain Bridge for the Neurosciences, King Juan Carlos Center, New York, USA (October).<br>
+26. <i>Colloquium.</i> Speech-Language-Hearing Sciences, The Graduate Center of CUNY, USA (October).<br>
+25. <i>Invited Speaker.</i> 2025–2029 Strategic Plan Development Workshop, University of Mondragon, Basque Country (March).<br>
+<br>
           <b>2023</b><br>
-24. <i>Plenary.</i> Architectures and Mechanisms for Language Processing AMLaP Conference, Donostia-San Sebastian, Basque Country. (August).<br>
-23. <i>Plenary.</i> XVI International Symposium of Psycholinguistics, Vitoria-Gasteiz, Basque Country. (May; <a href="https://ehutb.ehu.eus/video/64947077af1923e375734726">Available here.</a><).<br>
-22. <i>Colloquium.</i> Donostia International Physics Center. Donostia-San Sebastian, Basque Country. (March; <a href="https://www.youtube.com/watch?v=bBHDWOqrZu4">Available here.</a>).<br>
-21. <i>Keynote.</i> Perspectives on Multilingualism: An Interdisciplinary Roundtable. NYUAD Research Institute, New York, USA. (January; <a href="https://www.youtube.com/watch?v=aMa63gnZ4Ww">Available here.</a> ).<br>
+24. <i>Plenary.</i> Architectures and Mechanisms for Language Processing (AMLaP), Donostia-San Sebastian, Basque Country (August; <a href="https://ehutb.ehu.eus/video/64947077af1923e375734726">available here, in English.)</a><br>
+23. <i>Colloquium.</i> Donostia International Physics Center, Donostia-San Sebastian, Basque Country (March; <a href="https://www.youtube.com/watch?v=bBHDWOqrZu4">available here, in English.)</a><br>
+22. <i>Keynote.</i> Perspectives on Multilingualism: An Interdisciplinary Roundtable, NYUAD Research Institute, New York, USA (January; <a href="https://www.youtube.com/watch?v=aMa63gnZ4Ww">available here, in English.)</a><br>
+<br>
           <b>2022</b><br>
-20. <i>Symposium.</i> Dementia and Alzheimer in Low and Middle Income Countries, Nairobi, Kenya. (December).<br>
-19. <i>Colloquium.</i> Cognitive Sciences Program Weekly Speaker Series, Dartmouth University, USA. (October).<br>
-18. <i>Symposium.</i> Intersectional Experiences in Academia, University of Oslo, Norway. (March).<br>
-17. <i>Colloquium.</i> Psychology Department Seminar, New York University, USA. (March).<br>
-16. <i>Colloquium.</i> Cognitive Science Seminar, Johns Hopkins University, USA. (March).<br>
-15. <i>Colloquium.</i> Language and Cognitive Science Seminar, Delaware University, USA. (March).<br>
-14. <i>Colloquium.</i> Princeton Neuroscience Institute Seminar Series, Princeton University, USA. (March).<br>
-13. <i>Colloquium.</i> Neuroscience Research Research Seminar Series, University of Texas Rio Grande Valley, USA. (February).<br>
-12. <i>Colloquium.</i> Cognitive Area Talk, University of Michigan, Ann Arbor, USA. (January).<br>
+21. <i>Symposium.</i> Dementia and Alzheimer in Low and Middle Income Countries, Nairobi, Kenya (December).<br>
+20. <i>Colloquium.</i> Cognitive Sciences Program Weekly Speaker Series, Dartmouth University, USA (October).<br>
+19. <i>Symposium.</i> Intersectional Experiences in Academia, University of Oslo, Norway (March).<br>
+18. <i>Colloquium.</i> Psychology Department Seminar, New York University, USA (March).<br>
+17. <i>Colloquium.</i> Cognitive Science Seminar, Johns Hopkins University, USA (March).<br>
+16. <i>Colloquium.</i> Language and Cognitive Science Seminar, University of Delaware, USA (March).<br>
+15. <i>Colloquium.</i> Princeton Neuroscience Institute Seminar Series, Princeton University, USA (March).<br>
+14. <i>Colloquium.</i> Neuroscience Research Seminar Series, University of Texas Rio Grande Valley, USA (February).<br>
+13. <i>Colloquium.</i> Cognitive Area Talk, University of Michigan, Ann Arbor, USA (January).<br>
+<br>
           <b>2021</b><br>
-11. <i>Colloquium.</i> Aphasia Community Group Seminar Series, Boston University, USA. (November).<br>
-  
-10. <i>Colloquium.</i> Language and Brain Colloquium, University of Florida, USA. (October, <a href="https://www.youtube.com/watch?v=mpgX_nzHIfc">Available here.</a>).<br>
-9. <i>Award Talk.</i> Glushko Dissertation Award. Cognitive Science Society Meeting, USA (June, <a href="https://www.youtube.com/watch?v=0eBY1Ufeys4">Available here.</a>)<br>
-8. <i>Colloquium.</i> Department of Language Science, University of California Irvine, USA. (March).<br>
-7. <i>Plenary.</i> Young Scholar Speaker Series, Pennsylvania State University, USA. (March).<br>
-6. <i>Colloquium.</i> NIH National Institute on Aging's Virtual Workshop, USA. (March, <a href="https://videocast.nih.gov/watch=41551">Available here at 2:31:00.</a>).<br>
-         
-  
-  <b>2020</b><br>
-5. <i>Ev Lab.</i> MIT, Cambridge, USA. (2020).<br>
-4. <i>Colloquium.</i> Dartmouth University, New Hampshire, USA. (2020).<br>
-3. <i>Meet the author series.</i> Linguistics Department, NYU, USA. (2020).<br>
-2. <i>Mesgarani lab.</i> Columbia University, New York, USA. (2020).<br>
-1. <i>Colloquium</i>. Linguistics. Cornell University, Ithaca, USA. (2020).<br>
-   
-        </p>
-      </div>
-    </section>
-
-    <!-- Funding -->
-    <section class="w3-container w3-light-grey content-section" id="funding" aria-labelledby="funding-title">
-      <div class="w3-content">
-        <h2 id="funding-title" class="w3-center"><b>Funding and Awards</b></h2>
-        <p>
-          2025: Early Career Award, Society for the Neurobiology of Language (SNL)<br>
-          2021: Glushko Dissertation Award, CogSci Society.<br>
-          2021: NYU-wide Outstanding Dissertation award.<br>
-          2021: GSAS Outstanding Dissertation award.<br>
-          2020: Ben Barres Fellowship.<br>
-          2020: Coons/Leibowitz Graduate Student Teaching Award.<br>
-          2019: Forbes 30 under 30 in Science.<br>
-          2019: Martin Braine Dissertation fellowship.<br>
-          2018: Dingwall Dissertation Fellowship.<br>
-          2018: NYU Dean's travel award.<br>
-          2017: Neurobiology of Language predoctoral fellow award.<br>
-          2017: Woodcock Institute Grant.<br>
-          2016: Helmsley Fellowship.<br>
-          2016: NYU Dean's Student Travel Grant.<br>
-          2015: Neurobiology of Language Conference Travel Award.<br>
-          2015: MacCracken Fellowship.<br>
-          2014: La Caixa Foundation Fellowship.<br>
-          2012: BCBL academic merit scholarship.<br>
-          2011: Basque Government fellowship.<br>
-          2010: University of Deusto grant.<br>
-          2008: Basque Government Distinguished Academic scholarship.<br>
+12. <i>Colloquium.</i> Aphasia Community Group Seminar Series, Boston University, USA (November).<br>
+11. <i>Colloquium.</i> Language and Brain Colloquium, University of Florida, USA (October; <a href="https://www.youtube.com/watch?v=mpgX_nzHIfc">available here, in English.)</a><br>
+10. <i>Award Talk.</i> Glushko Dissertation Award, Cognitive Science Society Meeting, USA (June; <a href="https://www.youtube.com/watch?v=0eBY1Ufeys4">available here, in English.)</a><br>
+9. <i>Colloquium.</i> Department of Language Science, University of California, Irvine, USA (March).<br>
+8. <i>Plenary.</i> Young Scholar Speaker Series, Pennsylvania State University, USA (March).<br>
+7. <i>Colloquium.</i> NIH National Institute on Aging Virtual Workshop, USA (March; <a href="https://videocast.nih.gov/watch=41551">available here, in English.)</a><br>
+<br>
+          <b>2020</b><br>
+6. <i>Ev Lab.</i> MIT, Cambridge, USA (2020).<br>
+5. <i>Colloquium.</i> Dartmouth University, New Hampshire, USA (2020).<br>
+4. <i>Meet the Author Series.</i> Linguistics Department, New York University, USA (2020).<br>
+3. <i>Mesgarani Lab.</i> Columbia University, New York, USA (2020).<br>
+2. <i>Colloquium.</i> Linguistics, Cornell University, Ithaca, USA (2020).<br>
+1. <i>Colloquium.</i> Linguistics, Cornell University, Ithaca, USA (duplicate year context retained).<br>
+<br>
         </p>
       </div>
     </section>
@@ -313,29 +278,29 @@
       <div class="w3-content">
         <h2 id="outreach-title" class="w3-center"><b>Scientific Outreach</b></h2>
         <p>
-         2024:	Scientific Outreach Talk at "Sin Fronteras" Educational Institute in Madrid, Spain. <br> 
-2023:	Scientific Outreach Talk on Bilingualism and Child Development at Montessori School in Williamsburg, NYC. <br> 
-2023:	Interview on La mecanica del Caracol Science radio program (available <a href="https://www.eitb.eus/es/radio/radio-euskadi/programas/la-mecanica-del-caracol/detalle/9300286/investigacion-del-cerebro-bilingue-regresa-bilbao-zientzia-plaza-y-naukas-hitos-del-telescopio-james-webb/">here</a>, in Spanish). <br> 
-2023: 	Interview on language evolution in El Diario Vasco newspaper (available <a href="https://www.diariovasco.com/gipuzkoa/cerebro-limite-hora-aprender-idiomas-20230901064536-nt.html">here</a>, in Spanish). <br> 
-2023:	'De ondas de sonido a significado: como procesa nuestro cerebro los idiomas’. Scientific Divulgation Talk at the University of the Basque Country. <br>
-2023:	Interview on the bilingual brain in Berria newspaper (available <a href="https://www.berria.eus/paperekoa/2282/038/001/2023-03-24/elebitasunaren-kontrako-iritziek-ez-dute-zerikusirik-zientziarekin.amp.html">here</a>, in Basque). <br> 
-2023:	Radio program at EITB discussing the bilingual brain (available <a href="https://www.eitb.eus/es/radio/radio-euskadi/programas/la-mecanica-del-caracol/detalle/9144695/el-ipcc-pide-que-se-tomen-medidas-ambiciosas-y-urgentes-en-mitigacion-y-adaptacion-ante-cambio-climatico/">here</a> in Spanish).<br>	    
-2023:	Podcast episode on the psychology, neuroscience and philosophy of multilingualism (available <a href="https://open.spotify.com/episode/4FNOX6zADbFlyJacdWiotI?si=bqv_IRSGSLasxqzijlqetQ&nd=1">here</a>, in English).<br>
-2023:	‘How Does the Bilingual Brain Process Language?’ Public talk at NYUAD Institute. (available <a href="https://vimeo.com/manage/videos/799660457">here</a>, in English). <br>    
-2023:	‘Como funciona el cerebro bilingüe?’ Talk at San Telmo Museum in San Sebastian. (available <a href="https://www.youtube.com/watch?v=Ge4z2APYY2E&feature=youtu.be">here</a>, in Spanish). <br>  
-2022:	TV Interview on the effects on multilingualism on the brain for EITB (available <a href="https://www.eitb.eus/eu/telebista/programak/hitzokei/bideoak/osoa/9008355/egia-al-da-elebidunek-elebakarrek-baino-motelago-ikasten-dutela/">here</a>, in Basque).<br>
-2022:	Interview on multilingualism, language politics and science in El Español newspaper (available <a href="https://www.elespanol.com/ciencia/20221002/filologa-universidad-harvard-estudiando-trastorno-bruce-willis/706929740_0.html">here</a>, in Spanish).<br>
-2021:	Panelist and Organizer, Early Career Event, Society for the Neurobiology of Language.<br>
-2021:	Speaker, Doctoral Student Welcome Event, New York University.<br>
-2021:	TED in Spanish Podcast episode (available <a href="https://podcasts.apple.com/lu/podcast/ventajas-de-hablar-m%C3%A1s-de-un-idioma-esti-blanco-elorrieta/id1368017834?i=1000514352008&l=de"> here</a>, in Spanish).<br>
-2021:	Interview in Archiletras bi-monthly scientific magazine (available <a href="https://www.archiletras.com/actualidad/esti-blanco-elorrieta/">here</a>, in Spanish).<br>
-2021:	Baipasa: weekly contribution to science radio program (available <a href="https://www.eitb.eus/eu/irratia/euskadi-irratia/programak/baipasa/osoa/8330321/protesi-neuromuskulueskeletalei-esker-benetan-ukitzen-egongo-balira-moduko-sentsazioa-dute-pertsonek/">here</a> in Basque).<br>
-2020:	Interview in a TV episode of ‘The brain hunter’ (available <a href=https://www.rtve.es/m/alacarta/videos/el-cazador-de-cerebros/donde-nacen-idiomas/5897642/>here</a> in Spanish).<br>
-2020:	TED Talk in Spain, 2020 (available  <a href="https://www.youtube.com/watch?v=YwtoS3AxN-I">here</a>, in Spanish).<br>
-2020:	Interview on the multilingual brain in Onda Cero radio. Available <a href="https://www.ondacero.es/programas/julia-en-la-onda/programas-completos/30012020_202001305e331a9e0cf28bb05d0a7f73.html">here</a> in Spanish (minute 26 onwards).</a><br>
-2020:	Interview on the architecture of the multilingual brain in RTVE Spanish national radio. Available <a href="https://www.rtve.es/alacarta/audios/marca-espana/marca-espana-joven-cientifica-reconocida-como-forbes-30-under-30/5523857">here</a><br>
-2019:	‘How to build a career in Science’ panelist; Young Leaders of the America Initiative (YLAI).<br>
-2019:	Coverage of my multilingualism research in the <i>Inspire</i> series by Euronews (available <a href="https://www.youtube.com/watch?v=AyoZ-Q4t28c">here</a> in English).<br>
+         2024: Scientific Outreach Talk at "Sin Fronteras" Educational Institute in Madrid, Spain. <br> 
+2023: Scientific Outreach Talk on Bilingualism and Child Development at Montessori School in Williamsburg, NYC. <br> 
+2023: Interview on <i>La Mecánica del Caracol</i> science radio program (<a href="https://www.eitb.eus/es/radio/radio-euskadi/programas/la-mecanica-del-caracol/detalle/9300286/investigacion-del-cerebro-bilingue-regresa-bilbao-zientzia-plaza-y-naukas-hitos-del-telescopio-james-webb/">available here, in Spanish.)</a><br> 
+2023: Interview on language evolution in <i>El Diario Vasco</i> newspaper (<a href="https://www.diariovasco.com/gipuzkoa/cerebro-limite-hora-aprender-idiomas-20230901064536-nt.html">available here, in Spanish.)</a><br> 
+2023: ‘De ondas de sonido a significado: cómo procesa nuestro cerebro los idiomas’ — Scientific divulgation talk at the University of the Basque Country. <br>
+2023: Interview on the bilingual brain in <i>Berria</i> newspaper (<a href="https://www.berria.eus/paperekoa/2282/038/001/2023-03-24/elebitasunaren-kontrako-iritziek-ez-dute-zerikusirik-zientziarekin.amp.html">available here, in Basque.)</a><br> 
+2023: Radio program at EITB discussing the bilingual brain (<a href="https://www.eitb.eus/es/radio/radio-euskadi/programas/la-mecanica-del-caracol/detalle/9144695/el-ipcc-pide-que-se-tomen-medidas-ambiciosas-y-urgentes-en-mitigacion-y-adaptacion-ante-cambio-climatico/">available here, in Spanish.)</a><br>	    
+2023: Podcast episode on the psychology, neuroscience and philosophy of multilingualism (<a href="https://open.spotify.com/episode/4FNOX6zADbFlyJacdWiotI?si=bqv_IRSGSLasxqzijlqetQ&nd=1">available here, in English.)</a><br>
+2023: ‘How Does the Bilingual Brain Process Language?’ Public talk at NYUAD Institute (<a href="https://vimeo.com/manage/videos/799660457">available here, in English.)</a><br>    
+2023: ‘¿Cómo funciona el cerebro bilingüe?’ Talk at San Telmo Museum, San Sebastián (<a href="https://www.youtube.com/watch?v=Ge4z2APYY2E&feature=youtu.be">available here, in Spanish.)</a><br>  
+2022: TV interview on multilingualism and the brain for EITB (<a href="https://www.eitb.eus/eu/telebista/programak/hitzokei/bideoak/osoa/9008355/egia-al-da-elebidunek-elebakarrek-baino-motelago-ikasten-dutela/">available here, in Basque.)</a><br>
+2022: Interview on multilingualism, language politics and science in <i>El Español</i> newspaper (<a href="https://www.elespanol.com/ciencia/20221002/filologa-universidad-harvard-estudiando-trastorno-bruce-willis/706929740_0.html">available here, in Spanish.)</a><br>
+2021: Panelist and Organizer, Early Career Event, Society for the Neurobiology of Language.<br>
+2021: Speaker, Doctoral Student Welcome Event, New York University.<br>
+2021: TED en Español podcast episode (<a href="https://podcasts.apple.com/lu/podcast/ventajas-de-hablar-m%C3%A1s-de-un-idioma-esti-blanco-elorrieta/id1368017834?i=1000514352008&l=de">available here, in Spanish.)</a><br>
+2021: Interview in <i>Archiletras</i> bi-monthly scientific magazine (<a href="https://www.archiletras.com/actualidad/esti-blanco-elorrieta/">available here, in Spanish.)</a><br>
+2021: <i>Baipasa</i>: weekly contribution to science radio program (<a href="https://www.eitb.eus/eu/irratia/euskadi-irratia/programak/baipasa/osoa/8330321/protesi-neuromuskulueskeletalei-esker-benetan-ukitzen-egongo-balira-moduko-sentsazioa-dute-pertsonek/">available here, in Basque.)</a><br>
+2020: Interview in a TV episode of “El cazador de cerebros” (<a href="https://www.rtve.es/m/alacarta/videos/el-cazador-de-cerebros/donde-nacen-idiomas/5897642/">available here, in Spanish.)</a><br>
+2020: TED Talk in Spain (<a href="https://www.youtube.com/watch?v=YwtoS3AxN-I">available here, in Spanish.)</a><br>
+2020: Interview on the multilingual brain in Onda Cero radio (<a href="https://www.ondacero.es/programas/julia-en-la-onda/programas-completos/30012020_202001305e331a9e0cf28bb05d0a7f73.html">available here, in Spanish.)</a> (minute 26 onwards)<br>
+2020: Interview on the architecture of the multilingual brain in RTVE Spanish national radio (<a href="https://www.rtve.es/alacarta/audios/marca-espana/marca-espana-joven-cientifica-reconocida-como-forbes-30-under-30/5523857">available here, in Spanish.)</a><br>
+2019: ‘How to build a career in Science’ panelist; Young Leaders of the America Initiative (YLAI).<br>
+2019: Coverage of my multilingualism research in the <i>Inspire</i> series by Euronews (<a href="https://www.youtube.com/watch?v=AyoZ-Q4t28c">available here, in English.)</a><br>
 
         </p>
       </div>
@@ -346,16 +311,16 @@
       <div class="w3-content">
         <h2 id="advocacy-title" class="w3-center"><b>(Trans)gender Advocacy</b></h2>
         <p>
-2025:	<i>Keynote.</i> LGBTQ+ Research Showcase. UCL, UK. </a><br>
-2024:	<i>Interview.</i> NBC Today on Gender Affirming Voice Treatment (available <a href="https://www.today.com/health/gender-affirming-voice-therapy-rcna155629">here.</a><br>
-2022:	<i>Keynote.</i> Intersectional Experiences in Academia Workshop. University of Oslo<br>	    
-2021:	<i>Advisor.</i> Spanish ministry for Gender Equality: gender equality policy.<br>
-2021:	<i>Interview.</i>‘Identity, language, and the future' The Future Game. (available <a href="https://www.twitch.tv/videos/1177461195">here</a>, in Basque).<br>
-2021:	<i>Panelist.</i> Bayer pharmaceutical Latin-American branch: Pride event.<br>
-2021:	<i>Documentary</i>‘Non-binary’ feature documentary on trans experience (available <a href="https://vimeo.com/572965625/4d9051d298">here</a>, English subtitles).<br>
-2020:	<i>Panelist.</i> ELA Basque Trade Union: Pride event.<br>
-2020:	<i>Panelist.</i> National Organization of Gay and Lesbian Scientists and Technical Professionals: career panel.<br>
-2020:	<i>Mentor.</i>Harvard Women in STEM Initiative.<br>
+2025: <i>Keynote.</i> LGBTQ+ Research Showcase, UCL, UK.<br>
+2024: <i>Interview.</i> NBC Today on Gender-Affirming Voice Treatment (<a href="https://www.today.com/health/gender-affirming-voice-therapy-rcna155629">available here, in English.)</a><br>
+2022: <i>Keynote.</i> Intersectional Experiences in Academia Workshop, University of Oslo.<br>	    
+2021: <i>Advisor.</i> Spanish Ministry for Gender Equality: gender equality policy.<br>
+2021: <i>Interview.</i> “Identity, language, and the future”, The Future Game (<a href="https://www.twitch.tv/videos/1177461195">available here, in Basque.)</a><br>
+2021: <i>Panelist.</i> Bayer pharmaceutical Latin-American branch: Pride event.<br>
+2021: <i>Documentary.</i> “Non-binary” feature documentary on trans experience (<a href="https://vimeo.com/572965625/4d9051d298">available here, in English.)</a><br>
+2020: <i>Panelist.</i> ELA Basque Trade Union: Pride event.<br>
+2020: <i>Panelist.</i> National Organization of Gay and Lesbian Scientists and Technical Professionals: career panel.<br>
+2020: <i>Mentor.</i> Harvard Women in STEM Initiative.<br>
 
         </p>
       </div>
@@ -366,35 +331,35 @@
       <div class="w3-content">
         <h2 id="media-title" class="w3-center"><b>Media</b></h2>
         <p>
- 2023:		<i>Interview.</i> Diario Vasco Newspaper (available <a href="https://www.diariovasco.com/gipuzkoa/cerebro-limite-hora-aprender-idiomas-20230901064536-nt.html">here,</a> in Spanish.) <br>
-2023: 		<i>Interview.</i> Radio Vitoria (available <a href="https://www.eitb.eus/es/radio/radio-vitoria/programas/dialogos/audios/detalle/9220074/neuroimplantes-fusion-cerebromaquijna-como-entiende-nuestro-cerebro-idioma/">here</a>, in Spanish). <br> 
-2023:		<i>Interview.</i> Nius Diario (available <a href="https://www.niusdiario.es/ciencia-y-tecnologia/ciencia/20230506/entrevista-esti-blanco-elorrieta-espanola-habla-cuatro-idiomas-investiga-bilingueismo-harvard-hay-que-derribar-creencias-falsas_18_09430101.html">here,</a> in Spanish.) <br>
-2023:		<i>Interview.</i> The New York Times (available <a href="https://www.nytimes.com/2023/04/28/health/bilingualism-memory-dementia.html">here,</a> in English.) <br>
-2023:		<i>Interview.</i> Berria newspaper (available <a href="https://www.berria.eus/paperekoa/2282/038/001/2023-03-24/elebitasunaren-kontrako-iritziek-ez-dute-zerikusirik-zientziarekin.htm">here,</a> in Basque.) <br>
-2023:		<i>Interview.</i> ARGIA magazine (available <a href="https://www.argia.eus/argia-astekaria/2823/esti-blanco-elorrieta-tartekoari-adi">here,</a> in Basque.) <br>
+ 2023: <i>Interview.</i> <i>Diario Vasco</i> newspaper (<a href="https://www.diariovasco.com/gipuzkoa/cerebro-limite-hora-aprender-idiomas-20230901064536-nt.html">available here, in Spanish.)</a><br>
+2023: <i>Interview.</i> Radio Vitoria (<a href="https://www.eitb.eus/es/radio/radio-vitoria/programas/dialogos/audios/detalle/9220074/neuroimplantes-fusion-cerebromaquijna-como-entiende-nuestro-cerebro-idioma/">available here, in Spanish.)</a><br> 
+2023: <i>Interview.</i> <i>Nius Diario</i> (<a href="https://www.niusdiario.es/ciencia-y-tecnologia/ciencia/20230506/entrevista-esti-blanco-elorrieta-espanola-habla-cuatro-idiomas-investiga-bilingueismo-harvard-hay-que-derribar-creencias-falsas_18_09430101.html">available here, in Spanish.)</a><br>
+2023: <i>Interview.</i> <i>The New York Times</i> (<a href="https://www.nytimes.com/2023/04/28/health/bilingualism-memory-dementia.html">available here, in English.)</a><br>
+2023: <i>Interview.</i> <i>Berria</i> newspaper (<a href="https://www.berria.eus/paperekoa/2282/038/001/2023-03-24/elebitasunaren-kontrako-iritziek-ez-dute-zerikusirik-zientziarekin.htm">available here, in Basque.)</a><br>
+2023: <i>Interview.</i> <i>ARGIA</i> magazine (<a href="https://www.argia.eus/argia-astekaria/2823/esti-blanco-elorrieta-tartekoari-adi">available here, in Basque.)</a><br>
 
-2020: <i>Interview.</i> El Pais newspaper (available <a href="https://elpais.com/elpais/2020/01/27/ciencia/1580127774_061342.html">here</a> in Spanish.)<br>
-2020: <i>Interview.</i> Deia newspaper (available <a href="https://www.deia.eus/vivir-on/historias-de/2020/01/24/profesion-genio-mil-lenguajes-historias/1013567.html">here</a> in Spanish.)<br>
-2020:	<i>Interview.</i> COPE radio (available <a href="https://www.cope.es/programas/la-tarde/audios/tarde-04-02-2020-1700-1800-horas-20200204_997089">here</a> in Spanish from 20:00.)<br>
-2020:	<i>Interview.</i> EITB radio (available <a href="https://www.eitb.eus/eu/irratia/euskadi-irratia/programak/baipasa/audioak/osoa/7024549/baipasa-20200211/?utm_campaign=General&utm_medium=PODCAST&utm_source=BAIPASA">from 1:09.)</a><br>
+2020: <i>Interview.</i> <i>El País</i> newspaper (<a href="https://elpais.com/elpais/2020/01/27/ciencia/1580127774_061342.html">available here, in Spanish.)</a><br>
+2020: <i>Interview.</i> <i>Deia</i> newspaper (<a href="https://www.deia.eus/vivir-on/historias-de/2020/01/24/profesion-genio-mil-lenguajes-historias/1013567.html">available here, in Spanish.)</a><br>
+2020: <i>Interview.</i> COPE radio (<a href="https://www.cope.es/programas/la-tarde/audios/tarde-04-02-2020-1700-1800-horas-20200204_997089">available here, in Spanish.)</a> (from 20:00)<br>
+2020: <i>Interview.</i> EITB radio (<a href="https://www.eitb.eus/eu/irratia/euskadi-irratia/programak/baipasa/audioak/osoa/7024549/baipasa-20200211/?utm_campaign=General&utm_medium=PODCAST&utm_source=BAIPASA">available here, in Basque.)</a> (from 1:09)<br>
 	 
-2018:	<i>Research coverage.</i> American Association for the Advancement of Science (AAAS) news (available <a href=https://eurekalert.org/pub_releases/2018-04/nyu-wws032918.php> here</a>, in English.)<br>
-2018: <i>Research coverage.</i> Science Italy (available <a href=http://www.lescienze.it/news/2018/04/04/news/lingua_segni_parlato_stessi_circuiti_neurali-3927543>here</a>, in Italian.)<br>
-2018: <i>Research coverage.</i>	Russian N1 news channel (available <a href=https://nplus1.ru/news/2018/04/06/spoken-and-signed>here</a>, in Russian.)<br>
-2018:	<i>Research coverage.</i> NSF podcast (available <a href="https://www.youtube.com/watch?v=-gsn6OdszCs">here</a>, in English).<br>
+2018: <i>Research coverage.</i> American Association for the Advancement of Science (AAAS) news (<a href="https://eurekalert.org/pub_releases/2018-04/nyu-wws032918.php">available here, in English.)</a><br>
+2018: <i>Research coverage.</i> <i>Le Scienze</i> (Italy) (<a href="http://www.lescienze.it/news/2018/04/04/news/lingua_segni_parlato_stessi_circuiti_neurali-3927543">available here, in Italian.)</a><br>
+2018: <i>Research coverage.</i> Russian N1 news channel (<a href="https://nplus1.ru/news/2018/04/06/spoken-and-signed">available here, in Russian.)</a><br>
+2018: <i>Research coverage.</i> NSF podcast (<a href="https://www.youtube.com/watch?v=-gsn6OdszCs">available here, in English.)</a><br>
 
-2017:  <i>Research coverage.</i> Science Daily (available <a href=https://www.sciencedaily.com/releases/2017/08/170830103726.htm>here</a>, in English).<br>
-2017:  <i>Research coverage.</i> Lukor magazine: <a href=http://www.lukor.net/2017/08/31/chatting-makes-it-easy-to-switch-languages>here</a>, in English).<br>
-2017:  <i>Research coverage.</i> Science Codex: <a href=http://www.sciencecodex.com/changing-languages-effortful-bilingual-speakers-depends-situation-614000>here</a>, in English).<br>
-2017:  <i>Research coverage.</i> Health News Digest: <a href=http://www.healthnewsdigest.com/news/Research_270/Is-Changing-Languages-Effortful-for-Bilingual-Speakers.shtml>here</a>, in English).<br>
-2017:  <i>Research coverage.</i> Gears of Biz: <a href=http://gearsofbiz.com/is-changing-languages-effortful-for-bilingual-speakers-depends-on-the-situation/51308>here</a>, in English).<br>
-2017:  <i>Research coverage.</i> Futurity news:  <a href=http://www.futurity.org/bilingual-people-switching-languages-1529412/?platform=hootsuite>here</a>, in English).<br>
+2017: <i>Research coverage.</i> Science Daily (<a href="https://www.sciencedaily.com/releases/2017/08/170830103726.htm">available here, in English.)</a><br>
+2017: <i>Research coverage.</i> Lukor magazine (<a href="http://www.lukor.net/2017/08/31/chatting-makes-it-easy-to-switch-languages">available here, in English.)</a><br>
+2017: <i>Research coverage.</i> Science Codex (<a href="http://www.sciencecodex.com/changing-languages-effortful-bilingual-speakers-depends-situation-614000">available here, in English.)</a><br>
+2017: <i>Research coverage.</i> Health News Digest (<a href="http://www.healthnewsdigest.com/news/Research_270/Is-Changing-Languages-Effortful-for-Bilingual-Speakers.shtml">available here, in English.)</a><br>
+2017: <i>Research coverage.</i> Gears of Biz (<a href="http://gearsofbiz.com/is-changing-languages-effortful-for-bilingual-speakers-depends-on-the-situation/51308">available here, in English.)</a><br>
+2017: <i>Research coverage.</i> Futurity news (<a href="http://www.futurity.org/bilingual-people-switching-languages-1529412/?platform=hootsuite">available here, in English.)</a><br>
 
         </p>
       </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer (manual date now; no auto-update) -->
     <footer id="footer" class="w3-center w3-padding-24">Last updated — <span id="lastUpdated">01/21/2024</span></footer>
   </main>
 
@@ -478,13 +443,7 @@
       // Phones: open drawer by default when landing without hash
       if (!hash && isSmall()) w3_open();
 
-      // Auto-update "Last updated"
-      var d = new Date();
-      var mm = String(d.getMonth() + 1).padStart(2, "0");
-      var dd = String(d.getDate()).padStart(2, "0");
-      var yyyy = d.getFullYear();
-      var el = document.getElementById("lastUpdated");
-      if (el) el.textContent = mm + "/" + dd + "/" + yyyy;
+      // (Removed) auto-update of "Last updated" — manual now.
     };
 
     // Back/forward support
