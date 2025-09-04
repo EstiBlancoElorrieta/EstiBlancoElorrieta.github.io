@@ -80,13 +80,20 @@
     /* ---------- RESPONSIVE RULES ---------- */
 
     /* Phones only (≤768px): drawer mode */
-    @media (max-width: 768px) {
-      .w3-main { margin-left: 0; }            /* content not pushed */
-      .w3-sidebar { width: 280px; }           /* drawer width */
-      .topbar { display: block; position: sticky; top: 0; z-index: 4; }
-      /* When drawer is open on phones, hide main so text never sits behind the menu */
-      body.drawer-open .w3-main { display: none !important; }
-    }
+/* Phones only (≤768px) */
+@media (max-width: 768px) {
+  .w3-main { margin-left: 0; }
+  .w3-sidebar { width: 280px; }
+  .topbar { display: block; position: sticky; top: 0; z-index: 4; }
+
+  /* already present: keeps text from showing behind the menu */
+  body.drawer-open .w3-main { display: none !important; }
+
+  /* NEW: make the drawer full-width when open, and remove the dim overlay */
+  body.drawer-open { overflow: hidden; }                /* stop background scroll */
+  body.drawer-open #mySidebar { width: 100vw !important; left: 0; box-shadow: none; }
+  body.drawer-open #myOverlay { display: none !important; }  /* no “there’s content behind” hint */
+}
 
     /* Desktop & tablets (>768px): classic layout, no overlay/drawer */
     @media (min-width: 769px) {
