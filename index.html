@@ -14,60 +14,29 @@
   <style>
     :root {
       --sidebar-width: 300px;
-      /* widened for desktop so there’s less empty space */
-      --content-max: 1280px;
+      --content-max: 1280px; /* wider so there's less empty space */
     }
 
     html, body { height: 100%; }
     body, h1, h2, h3, h4, h5 { font-family: "Raleway", sans-serif; }
 
     /* Sidebar */
-    .w3-sidebar {
-      height: 100%;
-      width: var(--sidebar-width);
-      font-weight: bold;
-    }
-    /* Ensure id wins over any w3 rule */
+    .w3-sidebar { height: 100%; width: var(--sidebar-width); font-weight: bold; }
     #mySidebar { width: var(--sidebar-width) !important; left: 0; }
-    .profile-pic {
-      width: 150px;
-      border-radius: 50%;
-      margin: 20px auto 10px auto;
-      display: block;
-    }
+    .profile-pic { width: 150px; border-radius: 50%; margin: 20px auto 10px auto; display: block; }
     .contact-icons { margin-bottom: 15px; }
-    .contact-icons a {
-      margin: 0 8px;
-      font-size: 20px;
-      color: grey;
-      text-decoration: none;
-    }
+    .contact-icons a { margin: 0 8px; font-size: 20px; color: grey; text-decoration: none; }
     .contact-icons a:hover { color: black; }
 
     /* Main area */
-    .w3-main {
-      margin-left: var(--sidebar-width) !important; /* enforce offset on desktop */
-      min-height: 100%;
-      position: relative;
-      z-index: 1;
-    }
-    /* Gentle inner padding so text never hugs the edge */
+    .w3-main { margin-left: var(--sidebar-width) !important; min-height: 100%; position: relative; z-index: 1; }
     .w3-main .w3-container { padding-left: 32px; padding-right: 32px; }
 
     /* Content width */
-    .w3-content {
-      max-width: var(--content-max) !important;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: left;
-    }
+    .w3-content { max-width: var(--content-max) !important; margin-left: auto; margin-right: auto; text-align: left; }
 
     /* Sections */
-    .content-section {
-      display: none;
-      padding: 48px 0; /* side padding handled by .w3-main rule above */
-      min-height: calc(100vh - 80px);
-    }
+    .content-section { display: none; padding: 48px 0; min-height: calc(100vh - 80px); }
 
     /* Active link */
     .sidebar-link.w3-button.w3-white-active,
@@ -82,79 +51,62 @@
     /* Overlay (phones) */
     #myOverlay { background: rgba(0,0,0,0.25); z-index: 2; }
 
-    /* --- About Me heading size (smaller than before) --- */
+    /* About Me title */
     #about-title { font-size: 24px; line-height: 1.25; margin-top: 0; }
-    @media (max-width: 768px){
-      #about-title { font-size: 20px; }
-    }
+    @media (max-width: 768px){ #about-title { font-size: 20px; } }
 
-    /* --- mobile-only hero in About --- */
+    /* Mobile-only hero (About) */
     .mobile-hero{ display:none; text-align:center; margin:0 0 16px; }
     .mobile-hero img{ width:140px; height:140px; border-radius:50%; object-fit:cover; }
     .mobile-hero .name{ margin-top:10px; font-weight:700; font-size:20px; line-height:1.2; }
 
-    /* ---------- RESPONSIVE RULES ---------- */
-
-    /* Phones only (≤768px): drawer mode */
+    /* Phones (≤768px): drawer mode */
     @media (max-width: 768px) {
-      .w3-main { margin-left: 0 !important; }   /* content not pushed on phones */
+      .w3-main { margin-left: 0 !important; }
       .topbar { display: block; position: sticky; top: 0; z-index: 4; }
-
-      /* When drawer is open on phones, hide main so text never sits behind the menu */
       body.drawer-open .w3-main { display: none !important; }
-
-      /* Full-bleed drawer when open, remove overlay cue, and stop background scroll */
       .mobile-hero{ display:block; }
       body.drawer-open { overflow: hidden; }
       body.drawer-open #mySidebar { width: 100vw !important; left: 0; box-shadow: none; }
       body.drawer-open #myOverlay { display: none !important; }
     }
 
-    /* Desktop & tablets (>768px): classic layout, no overlay/drawer, hide mobile hero */
+    /* Desktop & tablets (>768px) */
     @media (min-width: 769px) {
       .topbar { display: none !important; }
       #myOverlay { display: none !important; }
-      #mySidebar { display: block !important; }  /* fixed sidebar always visible */
+      #mySidebar { display: block !important; }
       .mobile-hero{ display:none !important; }
     }
 
-    /* ===== Desktop & large-laptop readability tweaks (added) ===== */
+    /* Desktop readability */
     @media (min-width: 1024px) {
-      /* Bigger base text sitewide (About, Outreach, Advocacy, Media, etc.) */
       body { font-size: 18px; line-height: 1.7; }
-
-      /* Ensure the content can use the wider width */
       .w3-content { max-width: var(--content-max) !important; }
-
-      /* Keep section headings clearly larger than body text */
       h1, h2 { font-size: 26px; line-height: 1.3; }
+
+      /* Push the ABOUT content down a bit so it aligns with the name area in the sidebar */
+      #about .w3-content { padding-top: 28px; }
     }
 
-    /* Mid-size tablets in landscape (optional gentle bump) */
+    /* Mid tablets */
     @media (min-width: 820px) and (max-width: 1023px) {
       body { font-size: 17px; line-height: 1.65; }
     }
 
-    /* Publications & Invited Talks slightly smaller on desktop (added) */
+    /* Publications & Invited Talks slightly smaller */
     @media (min-width: 1024px) {
       #publications p,
-      #presentations p {
-        font-size: 16px;
-        line-height: 1.6;
-      }
+      #presentations p { font-size: 16px; line-height: 1.6; }
     }
   </style>
 </head>
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
-  <!-- Top bar (phones only): Menu button only (no name) -->
+  <!-- Top bar (phones only) -->
   <header class="topbar w3-bar w3-dark-grey w3-text-light-grey" role="banner">
-    <button class="w3-bar-item w3-button"
-            aria-label="Open menu"
-            aria-controls="mySidebar"
-            aria-expanded="false"
-            onclick="w3_open()">
+    <button class="w3-bar-item w3-button" aria-label="Open menu" aria-controls="mySidebar" aria-expanded="false" onclick="w3_open()">
       <i class="fa fa-bars"></i> Menu
     </button>
   </header>
@@ -162,17 +114,12 @@
   <!-- Sidebar/menu -->
   <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center"
        id="mySidebar" aria-label="Site navigation" style="z-index:3;">
-
     <br />
     <img src="https://EstiBlancoelorrieta.github.io/headshot3.png" alt="Esti Blanco-Elorrieta" class="profile-pic" />
-
     <div class="contact-icons" aria-label="Contact links">
       <a href="mailto:eb134@nyu.edu" aria-label="Email"><i class="fa fa-envelope"></i></a>
-      <a href="https://twitter.com/blancoelorrieta" target="_blank" rel="noopener" aria-label="Twitter">
-        <i class="fab fa-twitter"></i>
-      </a>
+      <a href="https://twitter.com/blancoelorrieta" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
     </div>
-
     <h3 class="w3-center" style="margin-top:0;"><b>Esti<br />Blanco-Elorrieta</b></h3>
 
     <a href="#about"         class="w3-bar-item w3-button sidebar-link" onclick="navigate('about')">ABOUT ME</a>
@@ -184,16 +131,15 @@
     <a href="#media"         class="w3-bar-item w3-button sidebar-link" onclick="navigate('media')">MEDIA</a>
   </nav>
 
-  <!-- Overlay (phones only; clicking closes) -->
+  <!-- Overlay (phones only) -->
   <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay" title="close side menu"></div>
 
-  <!-- Main content -->
+  <!-- Main -->
   <main class="w3-main" id="main" role="main">
 
-    <!-- About -->
-    <section class="w3-container w3-dark-grey w3-text-light-grey content-section" id="about" aria-labelledby="about-title">
+    <!-- About (now light background like others) -->
+    <section class="w3-container w3-light-grey content-section" id="about" aria-labelledby="about-title">
       <div class="w3-content">
-
         <!-- Mobile-only hero -->
         <div class="mobile-hero" aria-hidden="true">
           <img src="https://EstiBlancoelorrieta.github.io/headshot3.png" alt="Esti Blanco-Elorrieta">
@@ -394,18 +340,17 @@
       </div>
     </section>
 
-    <!-- Footer (manual date) -->
+    <!-- Footer -->
     <footer id="footer" class="w3-center w3-padding-24">Last updated — <span id="lastUpdated">09/05/2025</span></footer>
   </main>
 
   <!-- JavaScript -->
   <script>
-    // Phones-only breakpoint for drawer behavior
     var SMALL_SCREEN_QUERY = "(max-width: 768px)";
     function isSmall(){ return window.matchMedia(SMALL_SCREEN_QUERY).matches; }
 
     function w3_open() {
-      if (!isSmall()) return; // ignore on desktop/tablets
+      if (!isSmall()) return;
       var sb = document.getElementById("mySidebar");
       var ov = document.getElementById("myOverlay");
       if (sb) sb.style.display = "block";
@@ -415,7 +360,7 @@
       btns.forEach(function(b){ b.setAttribute("aria-expanded","true"); });
     }
     function w3_close() {
-      if (!isSmall()) return; // ignore on desktop/tablets
+      if (!isSmall()) return;
       var sb = document.getElementById("mySidebar");
       var ov = document.getElementById("myOverlay");
       if (sb) sb.style.display = "none";
@@ -442,53 +387,38 @@
 
     function showSection(sectionId) {
       var sections = document.getElementsByClassName("content-section");
-      for (var i = 0; i < sections.length; i++) {
-        sections[i].style.display = "none";
-      }
+      for (var i = 0; i < sections.length; i++) sections[i].style.display = "none";
       var target = document.getElementById(sectionId);
       if (target) target.style.display = "block";
 
-      // Footer color to match section
+      // Footer is always light now (About uses light background too)
       var footer = document.getElementById("footer");
-      if (sectionId === "about") {
-        footer.className = "w3-dark-grey w3-center w3-padding-24";
-      } else {
-        footer.className = "w3-light-grey w3-center w3-padding-24";
-      }
+      footer.className = "w3-light-grey w3-center w3-padding-24";
 
       setActiveLink(sectionId);
     }
 
     function navigate(sectionId) {
-      if (history.pushState) {
-        history.pushState(null, "", "#" + sectionId);
-      } else {
-        location.hash = sectionId;
-      }
+      if (history.pushState) { history.pushState(null, "", "#" + sectionId); }
+      else { location.hash = sectionId; }
       showSection(sectionId);
       if (isSmall()) w3_close();
     }
 
-    // On load
     window.onload = function () {
       var hash = window.location.hash.replace("#", "");
       showSection(hash || "about");
       if (!hash && isSmall()) w3_open(); // Phones: open drawer by default
-
-      // (No auto-update of "Last updated")
     };
 
-    // Back/forward support
     window.addEventListener("hashchange", function () {
       var hash = window.location.hash.replace("#", "") || "about";
       showSection(hash);
       if (isSmall()) w3_close();
     });
 
-    // Ensure correct state after resizing
     window.addEventListener("resize", function () {
       if (!isSmall()) {
-        // desktop/tablet state
         document.body.classList.remove("drawer-open");
         var ov = document.getElementById("myOverlay");
         if (ov) ov.style.display = "none";
@@ -497,7 +427,6 @@
       }
     });
 
-    // ESC closes drawer on phones
     document.addEventListener("keydown", function(e){
       if (e.key === "Escape") { w3_close(); }
     });
