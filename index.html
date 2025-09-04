@@ -26,6 +26,8 @@
       width: var(--sidebar-width);
       font-weight: bold;
     }
+    /* Ensure id wins over any w3 rule */
+    #mySidebar { width: var(--sidebar-width) !important; left: 0; }
     .profile-pic {
       width: 150px;
       border-radius: 50%;
@@ -43,11 +45,13 @@
 
     /* Main area */
     .w3-main {
-      margin-left: var(--sidebar-width);
+      margin-left: var(--sidebar-width) !important; /* enforce offset on desktop */
       min-height: 100%;
       position: relative;
       z-index: 1;
     }
+    /* Gentle inner padding so text never hugs the edge */
+    .w3-main .w3-container { padding-left: 32px; padding-right: 32px; }
 
     /* Content width */
     .w3-content {
@@ -60,7 +64,7 @@
     /* Sections */
     .content-section {
       display: none;
-      padding: 48px 32px;
+      padding: 48px 0; /* side padding handled by .w3-main rule above */
       min-height: calc(100vh - 80px);
     }
 
@@ -77,6 +81,12 @@
     /* Overlay (phones) */
     #myOverlay { background: rgba(0,0,0,0.25); z-index: 2; }
 
+    /* --- About Me heading size (smaller than before) --- */
+    #about-title { font-size: 24px; line-height: 1.25; margin-top: 0; }
+    @media (max-width: 768px){
+      #about-title { font-size: 20px; }
+    }
+
     /* --- mobile-only hero in About --- */
     .mobile-hero{ display:none; text-align:center; margin:0 0 16px; }
     .mobile-hero img{ width:140px; height:140px; border-radius:50%; object-fit:cover; }
@@ -86,8 +96,7 @@
 
     /* Phones only (≤768px): drawer mode */
     @media (max-width: 768px) {
-      .w3-main { margin-left: 0; }            /* content not pushed */
-      .w3-sidebar { width: 280px; }           /* drawer width by default */
+      .w3-main { margin-left: 0 !important; }   /* content not pushed on phones */
       .topbar { display: block; position: sticky; top: 0; z-index: 4; }
 
       /* When drawer is open on phones, hide main so text never sits behind the menu */
@@ -105,7 +114,6 @@
       .topbar { display: none !important; }
       #myOverlay { display: none !important; }
       #mySidebar { display: block !important; }  /* fixed sidebar always visible */
-      .w3-main { margin-left: var(--sidebar-width); }
       .mobile-hero{ display:none !important; }
     }
   </style>
@@ -165,7 +173,7 @@
           <div class="name">Esti<br>Blanco-Elorrieta</div>
         </div>
 
-        <h1 id="about-title" class="w3-xxlarge" style="margin-top:0;"><b>About Me</b></h1>
+        <h1 id="about-title"><b>About Me</b></h1>
         <p>I am an Assistant Professor of Psychology and Neural Science at New York University. 
         In my research, I combine insights from monolingual and multilingual individuals, 
         who process language through speech or sign, to inform an inclusive and comprehensive 
@@ -359,7 +367,7 @@
       </div>
     </section>
 
-    <!-- Footer (manual date now; no auto-update) -->
+    <!-- Footer (manual date) -->
     <footer id="footer" class="w3-center w3-padding-24">Last updated — <span id="lastUpdated">01/21/2024</span></footer>
   </main>
 
@@ -437,13 +445,10 @@
     // On load
     window.onload = function () {
       var hash = window.location.hash.replace("#", "");
-      // If deep link exists, go there; else default to About
       showSection(hash || "about");
+      if (!hash && isSmall()) w3_open(); // Phones: open drawer by default
 
-      // Phones: open drawer by default when landing without hash
-      if (!hash && isSmall()) w3_open();
-
-      // (Removed) auto-update of "Last updated" — manual now.
+      // (No auto-update of "Last updated")
     };
 
     // Back/forward support
