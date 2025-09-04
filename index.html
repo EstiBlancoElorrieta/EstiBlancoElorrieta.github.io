@@ -14,7 +14,8 @@
   <style>
     :root {
       --sidebar-width: 300px;
-      --content-max: 1200px; /* wider to reduce side gutters */
+      --content-max: 1200px;
+      --mobile-break: 992px;
     }
 
     html, body { height: 100%; }
@@ -47,7 +48,7 @@
       min-height: 100%;
     }
 
-    /* Inner content width and side padding */
+    /* Content width */
     .w3-content {
       max-width: var(--content-max) !important;
       margin-left: auto;
@@ -55,113 +56,117 @@
       text-align: left;
     }
 
-    /* Sections show/hide + spacing */
+    /* Sections */
     .content-section {
       display: none;
       padding: 48px 32px;
-      min-height: calc(100vh - 80px); /* ensures dark/ light area fills screen above footer */
+      min-height: calc(100vh - 80px);
     }
 
-    /* Active link style */
+    /* Active link */
     .sidebar-link.w3-button.w3-white-active,
-    .sidebar-link[aria-current="page"] {
-      background: #eee;
-    }
-
-    /* Sticky-ish footer spacing help on very short pages */
-    #footer {
-      line-height: 1.6;
-    }
+    .sidebar-link[aria-current="page"] { background: #eee; }
 
     /* Top bar for small screens */
-    .topbar {
-      display: none;
-    }
+    .topbar { display: none; }
 
-    /* Responsive tweaks */
+    /* Footer */
+    #footer { line-height: 1.6; }
+
+    /* Overlay tweak: make it slightly dim but not too dark */
+    #myOverlay { background: rgba(0,0,0,0.25); }
+
+    /* Mobile behavior */
     @media (max-width: 992px) {
-      .w3-sidebar { width: 100%; }
       .w3-main { margin-left: 0; }
+      .w3-sidebar { width: 260px; }
       .topbar {
         display: block;
         position: sticky;
         top: 0;
         z-index: 4;
       }
+
+      /* When drawer is open on mobile, hide main so you don't see the gray about bg behind */
+      body.drawer-open .w3-main { display: none; }
     }
   </style>
 </head>
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
-<!-- Top bar (mobile) -->
-<header class="topbar w3-bar w3-dark-grey w3-text-light-grey">
-  <button class="w3-bar-item w3-button" aria-label="Open menu" onclick="w3_open()">
-    <i class="fa fa-bars"></i> Menu
-  </button>
-  <div class="w3-bar-item">Esti Blanco-Elorrieta</div>
-</header>
+  <!-- Top bar (mobile) -->
+  <header class="topbar w3-bar w3-dark-grey w3-text-light-grey" role="banner">
+    <button class="w3-bar-item w3-button"
+            aria-label="Open menu"
+            aria-controls="mySidebar"
+            aria-expanded="false"
+            onclick="w3_open()">
+      <i class="fa fa-bars"></i> Menu
+    </button>
+    <div class="w3-bar-item">Esti Blanco-Elorrieta</div>
+  </header>
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center"
-     style="z-index:3;" id="mySidebar" aria-label="Site navigation">
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center"
+       style="z-index:3;" id="mySidebar" aria-label="Site navigation">
 
-  <br />
-  <img src="https://EstiBlancoelorrieta.github.io/headshot3.png" alt="Esti Blanco-Elorrieta" class="profile-pic" />
+    <br />
+    <img src="https://EstiBlancoelorrieta.github.io/headshot3.png" alt="Esti Blanco-Elorrieta" class="profile-pic" />
 
-  <div class="contact-icons" aria-label="Contact links">
-    <a href="mailto:eb134@nyu.edu" aria-label="Email"><i class="fa fa-envelope"></i></a>
-    <a href="https://twitter.com/blancoelorrieta" target="_blank" rel="noopener" aria-label="Twitter">
-      <i class="fab fa-twitter"></i>
-    </a>
-  </div>
-
-  <h3 class="w3-center" style="margin-top:0;"><b>Esti<br />Blanco-Elorrieta</b></h3>
-
-  <a href="#about"        class="w3-bar-item w3-button sidebar-link" onclick="navigate('about')">ABOUT ME</a>
-  <a href="#publications" class="w3-bar-item w3-button sidebar-link" onclick="navigate('publications')">PUBLICATIONS</a>
-  <a href="https://EstiBlancoElorrieta.github.io/CV_EBE.pdf" class="w3-bar-item w3-button" target="_blank" rel="noopener">CV</a>
-  <a href="#presentations" class="w3-bar-item w3-button sidebar-link" onclick="navigate('presentations')">INVITED TALKS</a>
-  <a href="#funding"      class="w3-bar-item w3-button sidebar-link" onclick="navigate('funding')">FUNDING AND AWARDS</a>
-  <a href="#outreach"     class="w3-bar-item w3-button sidebar-link" onclick="navigate('outreach')">SCIENTIFIC OUTREACH</a>
-  <a href="#advocacy"     class="w3-bar-item w3-button sidebar-link" onclick="navigate('advocacy')">(TRANS)GENDER ADVOCACY</a>
-  <a href="#media"        class="w3-bar-item w3-button sidebar-link" onclick="navigate('media')">MEDIA</a>
-</nav>
-
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay" title="close side menu"></div>
-
-<!-- Main content -->
-<main class="w3-main" id="main">
-
-  <!-- About -->
-  <section class="w3-container w3-dark-grey w3-text-light-grey content-section" id="about" aria-labelledby="about-title">
-    <div class="w3-content">
-      <h1 id="about-title" class="w3-xxlarge" style="margin-top:0;"><b>About Me</b></h1>
-      <p>I am an Assistant Professor of Psychology and Neural Science at New York University. 
-      In my research, I combine insights from monolingual and multilingual individuals, 
-      who process language through speech or sign, to inform an inclusive and comprehensive 
-      neurobiology of language. My research combines data from neuroimaging, computational 
-      and behavioral methods with theoretical insights from linguistics, psychology and 
-      neuroscience. Further, I take the most naturalistic approach possible to inform a 
-      theory that can not only account for laboratory based experiments but rather aims 
-      to capture the multifaceted and socially influenced experience of what it means to 
-      communicate in the real world.</p>
-      <p>I obtained my PhD from New York University, where I worked at the 
-      <a href="http://www.psych.nyu.edu/nellab/">Neuroscience of Language lab</a> under 
-      Liina Pylkkänen's supervision and completed my post-doctoral training at Harvard University, 
-      working in the <a href="https://cogneuro.psychology.fas.harvard.edu/people/esti-blanco-elorrieta">Cognitive Neuropsychology lab</a> 
-      under Alfonso Caramazza's supervision. In 2019, I was recognized as a 
-      <a href="https://www.forbes.com/profile/esti-blanco-elorrieta/?sh=6fce14906213">Forbes 30 under 30 scientist</a>.</p>
+    <div class="contact-icons" aria-label="Contact links">
+      <a href="mailto:eb134@nyu.edu" aria-label="Email"><i class="fa fa-envelope"></i></a>
+      <a href="https://twitter.com/blancoelorrieta" target="_blank" rel="noopener" aria-label="Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
     </div>
-  </section>
 
-  <!-- Publications -->
-  <section class="w3-container w3-light-grey content-section" id="publications" aria-labelledby="pubs-title">
-    <div class="w3-content">
-      <h2 id="pubs-title" class="w3-center"><b>Publications</b></h2>
-      <p>
-        23. <b>Blanco-Elorrieta, E. </b> & Arantzeta, M. (2025). Basque-Spanish bilingual aphasia: a case-study to inform bilingual language organization.<i> Neurobiology of Language. </i><br><br>	    
+    <h3 class="w3-center" style="margin-top:0;"><b>Esti<br />Blanco-Elorrieta</b></h3>
+
+    <a href="#about"         class="w3-bar-item w3-button sidebar-link" onclick="navigate('about')">ABOUT ME</a>
+    <a href="#publications"  class="w3-bar-item w3-button sidebar-link" onclick="navigate('publications')">PUBLICATIONS</a>
+    <a href="https://EstiBlancoElorrieta.github.io/CV_EBE.pdf" class="w3-bar-item w3-button" target="_blank" rel="noopener">CV</a>
+    <a href="#presentations" class="w3-bar-item w3-button sidebar-link" onclick="navigate('presentations')">INVITED TALKS</a>
+    <a href="#funding"       class="w3-bar-item w3-button sidebar-link" onclick="navigate('funding')">FUNDING AND AWARDS</a>
+    <a href="#outreach"      class="w3-bar-item w3-button sidebar-link" onclick="navigate('outreach')">SCIENTIFIC OUTREACH</a>
+    <a href="#advocacy"      class="w3-bar-item w3-button sidebar-link" onclick="navigate('advocacy')">(TRANS)GENDER ADVOCACY</a>
+    <a href="#media"         class="w3-bar-item w3-button sidebar-link" onclick="navigate('media')">MEDIA</a>
+  </nav>
+
+  <!-- Overlay (click to close) -->
+  <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay" title="close side menu"></div>
+
+  <!-- Main content -->
+  <main class="w3-main" id="main" role="main">
+
+    <!-- About -->
+    <section class="w3-container w3-dark-grey w3-text-light-grey content-section" id="about" aria-labelledby="about-title">
+      <div class="w3-content">
+        <h1 id="about-title" class="w3-xxlarge" style="margin-top:0;"><b>About Me</b></h1>
+        <p>I am an Assistant Professor of Psychology and Neural Science at New York University. 
+        In my research, I combine insights from monolingual and multilingual individuals, 
+        who process language through speech or sign, to inform an inclusive and comprehensive 
+        neurobiology of language. My research combines data from neuroimaging, computational 
+        and behavioral methods with theoretical insights from linguistics, psychology and 
+        neuroscience. Further, I take the most naturalistic approach possible to inform a 
+        theory that can not only account for laboratory based experiments but rather aims 
+        to capture the multifaceted and socially influenced experience of what it means to 
+        communicate in the real world.</p>
+        <p>I obtained my PhD from New York University, where I worked at the 
+        <a href="http://www.psych.nyu.edu/nellab/">Neuroscience of Language lab</a> under 
+        Liina Pylkkänen's supervision and completed my post-doctoral training at Harvard University, 
+        working in the <a href="https://cogneuro.psychology.fas.harvard.edu/people/esti-blanco-elorrieta">Cognitive Neuropsychology lab</a> 
+        under Alfonso Caramazza's supervision. In 2019, I was recognized as a 
+        <a href="https://www.forbes.com/profile/esti-blanco-elorrieta/?sh=6fce14906213">Forbes 30 under 30 scientist</a>.</p>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section class="w3-container w3-light-grey content-section" id="publications" aria-labelledby="pubs-title">
+      <div class="w3-content">
+        <h2 id="pubs-title" class="w3-center"><b>Publications</b></h2>
+        <p>
+          23. <b>Blanco-Elorrieta, E. </b> & Arantzeta, M. (2025). Basque-Spanish bilingual aphasia: a case-study to inform bilingual language organization.<i> Neurobiology of Language. </i><br><br>	    
 22. <b>Blanco-Elorrieta, E. </b> (2025). Is adaptation the new ‘bilingual advantage’?. <i> Trends in Cognitive Sciences </i>, 1-28.<a href="https://doi.org/10.1016/j.tics.2024.11.003">https://doi.org/10.1016/j.tics.2024.11.003</a><br><br>
 21. Baus, C., Millan, I., Chen, X. J., & <b> Blanco-Elorrieta, E. </b> (2024). Exploring Language Comprehension through Cortical Tracking: the bilingual test case. <i> Neurobiology of Language </i>, 1-28. <a href="https://doi.org/10.1162/nol_a_00141"> https://doi.org/10.1162/nol_a_00141</a><br><br>
 20. Abdullah, L., Valdez, D., <b> Blanco-Elorrieta, E., </b> (2023). ¿Cómo qué, cómo qué? cómo qué? Single-language echolalia in a bilingual female with Progressive Supranuclear Palsy: A case report. <i> Archives of Clinical Neuropsychology </i>, 38(7), 1482-1482. <a href="https://doi.org/10.1093/arclin/acad067.319"> https://doi.org/10.1093/arclin/acad067.319</a> <br><br>
@@ -184,264 +189,280 @@
 3. <b>Blanco-Elorrieta, E. </b> & Pylkk&auml;nen, L. (2015).  Composition of complex numbers: Delineating the computational role of the left anterior temporal lobe.<i> NeuroImage </i>124(Pt A):194-203 <a href="https://doi.org/10.1016/j.neuroimage.2015.08.049">https://doi.org/10.1016/j.neuroimage.2015.08.049</a><br><br>
 2. <b>Blanco Elorrieta, E. </b> & Pylkk&auml;nen, L. (2015). Brain bases of language selection: MEG evidence from Arabic-English bilingual language production. <i> Frontiers in Human Neuroscience, 9:27 </i> <a href="https://doi.org/10.3389/fnhum.2015.00027">https://doi.org/10.3389/fnhum.2015.00027</a><br><br>
 1. Pylkk&auml;nen, L., Bemis, D.K., & <b>Blanco-Elorrieta, E.</b> (2014).  Building phrases in language production: An MEG study of simple composition. <i>Cognition </i>, 133, 371-384 <a href="https://doi.org/10.1016/j.cognition.2014.07.001">https://doi.org/10.1016/j.cognition.2014.07.001</a><br><br>
-      </p>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <!-- Invited Talks -->
-  <section class="w3-container w3-light-grey content-section" id="presentations" aria-labelledby="talks-title">
-    <div class="w3-content">
-      <h2 id="talks-title" class="w3-center"><b>Invited Talks</b></h2>
-      <p>
-        <b>2025</b><br>
-        The neurobiology of bilingualism. Waseda University Psycholinguistics Workshop, Tokyo, Japan.<br>
-        The neurobiology of bilingualism: insights from neuroimaging and neuropsychology. Keynote Talk, Theoretical East Asian Psycholinguistics, Tokyo, Japan.<br>
-        The neurobiology of bilingualism: insights from neuroimaging and neuropsychology. Communicative Sciences and Disorders Colloquium, NYU.<br>
-        The neurobiology of bilingualism: insights from neuroimaging and neuropsychology. Neuroscience Graduate Program Colloquium, UCSD.<br>
-        The neurobiology of bilingualism: theory and clinical implications. Language and Communicative Disorders Speaker Series, SDSU.<br>
-        Grounds, evidence, and implications of a unified bilingual mind. Keynote Talk, ATOM Conference, Universitat Autonoma de Barcelona.<br><br>
+    <!-- Invited Talks -->
+    <section class="w3-container w3-light-grey content-section" id="presentations" aria-labelledby="talks-title">
+      <div class="w3-content">
+        <h2 id="talks-title" class="w3-center"><b>Invited Talks</b></h2>
+        <p>
+          <b>2025</b><br>
+          The neurobiology of bilingualism. Waseda University Psycholinguistics Workshop, Tokyo, Japan.<br>
+          The neurobiology of bilingualism: insights from neuroimaging and neuropsychology. Keynote Talk, Theoretical East Asian Psycholinguistics, Tokyo, Japan.<br>
+          The neurobiology of bilingualism: insights from neuroimaging and neuropsychology. Communicative Sciences and Disorders Colloquium, NYU.<br>
+          The neurobiology of bilingualism: insights from neuroimaging and neuropsychology. Neuroscience Graduate Program Colloquium, UCSD.<br>
+          The neurobiology of bilingualism: theory and clinical implications. Language and Communicative Disorders Speaker Series, SDSU.<br>
+          Grounds, evidence, and implications of a unified bilingual mind. Keynote Talk, ATOM Conference, Universitat Autonoma de Barcelona.<br><br>
 
-        <b>2024</b><br>
-        The inner workings of the bilingual mind. USA & Spain Bridge for Neurosciences, NYU.<br>
-        The neurobiology of bilingualism: theory and clinical implications. Speech-Language-Hearing Sciences Colloquium, CUNY Graduate Center.<br>
-        The neurobiology of bilingualism: theory and clinical implications. Invited Speaker, SYNC Linguistics Conference, USA.<br><br>
+          <b>2024</b><br>
+          The inner workings of the bilingual mind. USA & Spain Bridge for Neurosciences, NYU.<br>
+          The neurobiology of bilingualism: theory and clinical implications. Speech-Language-Hearing Sciences Colloquium, CUNY Graduate Center.<br>
+          The neurobiology of bilingualism: theory and clinical implications. Invited Speaker, SYNC Linguistics Conference, USA.<br><br>
 
-        <b>2023</b><br>
-        Multilingualism and gender in research. Keynote, University of Mondragon.<br>
-        What is the bilingual brain? Plenary Talk, AMLaP Conference, Donostia-San Sebastian.<br>
-        Neural bases of bilingualism in the wild. Keynote, International Symposium of Psycholinguistics, Vitoria-Gasteiz.<br>
-        Bilingualism, brain damage and rehabilitation. Colloquium, Donostia International Physics Center.<br>
-        How does the bilingual brain process language? Keynote, NYUAD Institute.<br><br>
+          <b>2023</b><br>
+          Multilingualism and gender in research. Keynote, University of Mondragon.<br>
+          What is the bilingual brain? Plenary Talk, AMLaP Conference, Donostia-San Sebastian.<br>
+          Neural bases of bilingualism in the wild. Keynote, International Symposium of Psycholinguistics, Vitoria-Gasteiz.<br>
+          Bilingualism, brain damage and rehabilitation. Colloquium, Donostia International Physics Center.<br>
+          How does the bilingual brain process language? Keynote, NYUAD Institute.<br><br>
 
-        <b>2022</b><br>
-        Mapping cortical lesions and communicative deficits in bilingual aphasia. Nairobi, Kenya.<br>
-        Towards a comprehensive neurobiology of language. Dartmouth College.<br>
-        Towards a more inclusive neurobiology of language. Johns Hopkins University.<br>
-        Towards a more inclusive neurobiology of language. Delaware University.<br>
-        Towards comprehensive neurobiology of language. NYU Cognition & Perception Seminar.<br>
-        Towards a more inclusive neurobiology of language. Princeton University.<br>
-        The multilingual brain. University of Texas Rio Grande Valley.<br>
-        Gender non-conformity, inclusivity, and academia. University of Oslo.<br>
-        Towards an inclusive neurobiology of Language. University of Michigan.<br><br>
+          <b>2022</b><br>
+          Mapping cortical lesions and communicative deficits in bilingual aphasia. Nairobi, Kenya.<br>
+          Towards a comprehensive neurobiology of language. Dartmouth College.<br>
+          Towards a more inclusive neurobiology of language. Johns Hopkins University.<br>
+          Towards a more inclusive neurobiology of language. Delaware University.<br>
+          Towards comprehensive neurobiology of language. NYU Cognition & Perception Seminar.<br>
+          Towards a more inclusive neurobiology of language. Princeton University.<br>
+          The multilingual brain. University of Texas Rio Grande Valley.<br>
+          Gender non-conformity, inclusivity, and academia. University of Oslo.<br>
+          Towards an inclusive neurobiology of Language. University of Michigan.<br><br>
 
-        <b>2021</b><br>
-        An ecologically valid neurobiology of multilingualism. University of Florida.<br>
-        Language-specific and language-general neural mechanisms in bilingual aphasic patients. Boston University.<br>
-        Towards an ecologically valid neurobiology of language. Glushko Award Talk, CogSci Society.<br>
-        Bilingualism and Cognitive Reserve and Resilience. NIH Workshop.<br>
-        Towards an ecologically valid neurobiology of bilingualism. UC Irvine.<br>
-        Towards an ecologically valid neurobiology of bilingualism. Young Scholar Speaker Series, Penn State.<br><br>
+          <b>2021</b><br>
+          An ecologically valid neurobiology of multilingualism. University of Florida.<br>
+          Language-specific and language-general neural mechanisms in bilingual aphasic patients. Boston University.<br>
+          Towards an ecologically valid neurobiology of language. Glushko Award Talk, CogSci Society.<br>
+          Bilingualism and Cognitive Reserve and Resilience. NIH Workshop.<br>
+          Towards an ecologically valid neurobiology of bilingualism. UC Irvine.<br>
+          Towards an ecologically valid neurobiology of bilingualism. Young Scholar Speaker Series, Penn State.<br><br>
 
-        <b>2020</b><br>
-        Bilingualism, language and cognition. Meet the Author, NYU.<br>
-        Bilingualism: questions and future directions. Dartmouth University.<br>
-        Towards an ecologically valid neurobiology of bilingualism. MIT, Fedorenko Lab.<br>
-        The true advantage of multilingualism. TEDx Tarragona, Spain.<br>
-        Challenges of bilingual speech comprehension. Columbia University.<br>
-        Growth in times of crisis. Entre cuatro paredes, NYC.<br>
-        The Neurobiology of Multilingualism. Cornell University.<br><br>
+          <b>2020</b><br>
+          Bilingualism, language and cognition. Meet the Author, NYU.<br>
+          Bilingualism: questions and future directions. Dartmouth University.<br>
+          Towards an ecologically valid neurobiology of bilingualism. MIT, Fedorenko Lab.<br>
+          The true advantage of multilingualism. TEDx Tarragona, Spain.<br>
+          Challenges of bilingual speech comprehension. Columbia University.<br>
+          Growth in times of crisis. Entre cuatro paredes, NYC.<br>
+          The Neurobiology of Multilingualism. Cornell University.<br><br>
 
-        <b>2019</b><br>
-        Challenges of comprehending bilingual speech in noise. British Academy of Cognitive Neuroscience, Cambridge, UK.<br><br>
+        </p>
+      </div>
+    </section>
 
-        <b>2018</b><br>
-        The neurobiology of bilingualism: Insight from MEG. University of the Basque Country.<br>
-        The neurobiology of bilingualism: Insight from MEG. Harvard University.<br>
-        The neurobiology of bilingualism: Insight from MEG. UC San Diego.<br><br>
+    <!-- Funding -->
+    <section class="w3-container w3-light-grey content-section" id="funding" aria-labelledby="funding-title">
+      <div class="w3-content">
+        <h2 id="funding-title" class="w3-center"><b>Funding and Awards</b></h2>
+        <p>
+          2021: Glushko Dissertation award, CogSci Society.<br>
+          2021: NYU-wide Outstanding Dissertation award.<br>
+          2021: GSAS Outstanding Dissertation award.<br>
+          2020: Ben Barres Fellowship.<br>
+          2020: Coons/Leibowitz Graduate Student Teaching Award.<br>
+          2019: Forbes 30 under 30 in Science.<br>
+          2019: Martin Braine Dissertation fellowship.<br>
+          2018: Dingwall Dissertation Fellowship.<br>
+          2018: NYU Dean's travel award.<br>
+          2017: Neurobiology of Language predoctoral fellow award.<br>
+          2017: Woodcock Institute Grant.<br>
+          2016: Helmsley Fellowship.<br>
+          2016: NYU Dean's Student Travel Grant.<br>
+          2015: Neurobiology of Language Conference Travel Award.<br>
+          2015: MacCracken Fellowship.<br>
+          2014: La Caixa Foundation Fellowship.<br>
+          2012: BCBL academic merit scholarship.<br>
+          2011: Basque Government fellowship.<br>
+          2010: University of Deusto grant.<br>
+          2008: Basque Government Distinguished Academic scholarship.<br>
+        </p>
+      </div>
+    </section>
 
-        <b>2017</b><br>
-        The neurocognition of bilingualism. Young Leaders of the Americas Initiative (YLAI), NYC.<br><br>
+    <!-- Outreach -->
+    <section class="w3-container w3-light-grey content-section" id="outreach" aria-labelledby="outreach-title">
+      <div class="w3-content">
+        <h2 id="outreach-title" class="w3-center"><b>Scientific Outreach</b></h2>
+        <p>
+          2024: Talk at "Sin Fronteras" Educational Institute, Madrid.<br>
+          2023: Talk at Montessori School, NYC.<br>
+          2023: Interview on La mecanica del Caracol, Spanish radio.<br>
+          2023: Interview in El Diario Vasco.<br>
+          2023: Scientific talk at University of the Basque Country.<br>
+          2023: Interview in Berria newspaper.<br>
+          2023: Radio program at EITB.<br>
+          2023: Podcast episode on multilingualism.<br>
+          2023: Public talk at NYUAD Institute.<br>
+          2023: Talk at San Telmo Museum, San Sebastian.<br>
+          2022: TV Interview, EITB.<br>
+          2022: Interview in El Español.<br>
+          2021: Panelist, SNL Early Career Event.<br>
+          2021: Speaker, NYU Welcome Event.<br>
+          2021: TED in Spanish Podcast episode.<br>
+          2021: Interview in Archiletras magazine.<br>
+          2021: Weekly contribution to Baipasa radio.<br>
+          2020: TV episode “The Brain Hunter”, RTVE.<br>
+          2020: TED Talk in Spain.<br>
+          2020: Interview in Onda Cero radio.<br>
+          2020: Interview in RTVE radio.<br>
+          2019: Panelist, Young Leaders of the America Initiative.<br>
+          2019: Euronews Inspire coverage.<br>
+        </p>
+      </div>
+    </section>
 
-        <b>2016</b><br>
-        Brain bases of bilingual language selection and switching. CUNY Graduate Center, NYC.<br>
-      </p>
-    </div>
-  </section>
+    <!-- Advocacy -->
+    <section class="w3-container w3-light-grey content-section" id="advocacy" aria-labelledby="advocacy-title">
+      <div class="w3-content">
+        <h2 id="advocacy-title" class="w3-center"><b>(Trans)gender Advocacy</b></h2>
+        <p>
+          2025: Keynote, UCL LGBTQ+ Research Showcase.<br>
+          2024: NBC Today interview on Gender Affirming Voice Treatment.<br>
+          2022: Panelist, Intersectional Experiences, University of Oslo.<br>
+          2021: Advisory Committee, Spanish Ministry for Gender Equality.<br>
+          2021: Twitch interview “Identity, language, and the future”.<br>
+          2021: Bayer Pride event panelist.<br>
+          2021: Documentary “Non-binary” on trans experience.<br>
+          2020: Pride event, ELA Basque Trade Union.<br>
+          2020: NOGLSTP speaker.<br>
+          2020: Harvard Women in STEM Mentor.<br>
+          2019: Panelist, “Being trans in Academia”.<br>
+        </p>
+      </div>
+    </section>
 
-  <!-- Funding -->
-  <section class="w3-container w3-light-grey content-section" id="funding" aria-labelledby="funding-title">
-    <div class="w3-content">
-      <h2 id="funding-title" class="w3-center"><b>Funding and Awards</b></h2>
-      <p>
-        2021: Glushko Dissertation award, CogSci Society.<br>
-        2021: NYU-wide Outstanding Dissertation award.<br>
-        2021: GSAS Outstanding Dissertation award.<br>
-        2020: Ben Barres Fellowship.<br>
-        2020: Coons/Leibowitz Graduate Student Teaching Award.<br>
-        2019: Forbes 30 under 30 in Science.<br>
-        2019: Martin Braine Dissertation fellowship.<br>
-        2018: Dingwall Dissertation Fellowship.<br>
-        2018: NYU Dean's travel award.<br>
-        2017: Neurobiology of Language predoctoral fellow award.<br>
-        2017: Woodcock Institute Grant.<br>
-        2016: Helmsley Fellowship.<br>
-        2016: NYU Dean's Student Travel Grant.<br>
-        2015: Neurobiology of Language Conference Travel Award.<br>
-        2015: MacCracken Fellowship.<br>
-        2014: La Caixa Foundation Fellowship.<br>
-        2012: BCBL academic merit scholarship.<br>
-        2011: Basque Government fellowship.<br>
-        2010: University of Deusto grant.<br>
-        2008: Basque Government Distinguished Academic scholarship.<br>
-      </p>
-    </div>
-  </section>
+    <!-- Media -->
+    <section class="w3-container w3-light-grey content-section" id="media" aria-labelledby="media-title">
+      <div class="w3-content">
+        <h2 id="media-title" class="w3-center"><b>Media</b></h2>
+        <p>
+          2023: Interview in Diario Vasco.<br>
+          2023: Radio interview at Radio Vitoria.<br>
+          2023: Interview in Nius Diario.<br>
+          2023: Interview in The New York Times.<br>
+          2023: Interview in Berria newspaper.<br>
+          2023: Interview in ARGIA magazine.<br>
+          2020: Interview in El País.<br>
+          2020: Interview in Deia.<br>
+          2020: Interview on radio COPE.<br>
+          2020: Interview in EITB Basque national radio.<br>
+          2018: Coverage in AAAS news, Lescienze, N1, NSF podcast.<br>
+          2017: Coverage of J. Neuroscience paper in Science Daily, Lukor, Science Codex.<br>
+          2016: Press release NYUAD, coverage in Gulf Today, Khaleej Times, The National, ZAWYA, UAE News Agency, MSN.<br>
+        </p>
+      </div>
+    </section>
 
-  <!-- Outreach -->
-  <section class="w3-container w3-light-grey content-section" id="outreach" aria-labelledby="outreach-title">
-    <div class="w3-content">
-      <h2 id="outreach-title" class="w3-center"><b>Scientific Outreach</b></h2>
-      <p>
-        2024: Talk at "Sin Fronteras" Educational Institute, Madrid.<br>
-        2023: Talk at Montessori School, NYC.<br>
-        2023: Interview on La mecanica del Caracol, Spanish radio.<br>
-        2023: Interview in El Diario Vasco.<br>
-        2023: Scientific talk at University of the Basque Country.<br>
-        2023: Interview in Berria newspaper.<br>
-        2023: Radio program at EITB.<br>
-        2023: Podcast episode on multilingualism.<br>
-        2023: Public talk at NYUAD Institute.<br>
-        2023: Talk at San Telmo Museum, San Sebastian.<br>
-        2022: TV Interview, EITB.<br>
-        2022: Interview in El Español.<br>
-        2021: Panelist, SNL Early Career Event.<br>
-        2021: Speaker, NYU Welcome Event.<br>
-        2021: TED in Spanish Podcast episode.<br>
-        2021: Interview in Archiletras magazine.<br>
-        2021: Weekly contribution to Baipasa radio.<br>
-        2020: TV episode “The Brain Hunter”, RTVE.<br>
-        2020: TED Talk in Spain.<br>
-        2020: Interview in Onda Cero radio.<br>
-        2020: Interview in RTVE radio.<br>
-        2019: Panelist, Young Leaders of the America Initiative.<br>
-        2019: Euronews Inspire coverage.<br>
-      </p>
-    </div>
-  </section>
+    <!-- Footer -->
+    <footer id="footer" class="w3-center w3-padding-24">Last updated — <span id="lastUpdated">01/21/2024</span></footer>
+  </main>
 
-  <!-- Advocacy -->
-  <section class="w3-container w3-light-grey content-section" id="advocacy" aria-labelledby="advocacy-title">
-    <div class="w3-content">
-      <h2 id="advocacy-title" class="w3-center"><b>(Trans)gender Advocacy</b></h2>
-      <p>
-        2025: Keynote, UCL LGBTQ+ Research Showcase.<br>
-        2024: NBC Today interview on Gender Affirming Voice Treatment.<br>
-        2022: Panelist, Intersectional Experiences, University of Oslo.<br>
-        2021: Advisory Committee, Spanish Ministry for Gender Equality.<br>
-        2021: Twitch interview “Identity, language, and the future”.<br>
-        2021: Bayer Pride event panelist.<br>
-        2021: Documentary “Non-binary” on trans experience.<br>
-        2020: Pride event, ELA Basque Trade Union.<br>
-        2020: NOGLSTP speaker.<br>
-        2020: Harvard Women in STEM Mentor.<br>
-        2019: Panelist, “Being trans in Academia”.<br>
-      </p>
-    </div>
-  </section>
+  <!-- JavaScript -->
+  <script>
+    var MOBILE_QUERY = "(max-width: 992px)";
 
-  <!-- Media -->
-  <section class="w3-container w3-light-grey content-section" id="media" aria-labelledby="media-title">
-    <div class="w3-content">
-      <h2 id="media-title" class="w3-center"><b>Media</b></h2>
-      <p>
-        2023: Interview in Diario Vasco.<br>
-        2023: Radio interview at Radio Vitoria.<br>
-        2023: Interview in Nius Diario.<br>
-        2023: Interview in The New York Times.<br>
-        2023: Interview in Berria newspaper.<br>
-        2023: Interview in ARGIA magazine.<br>
-        2020: Interview in El País.<br>
-        2020: Interview in Deia.<br>
-        2020: Interview on radio COPE.<br>
-        2020: Interview in EITB Basque national radio.<br>
-        2018: Coverage in AAAS news, Lescienze, N1, NSF podcast.<br>
-        2017: Coverage of J. Neuroscience paper in Science Daily, Lukor, Science Codex.<br>
-        2016: Press release NYUAD, coverage in Gulf Today, Khaleej Times, The National, ZAWYA, UAE News Agency, MSN.<br>
-      </p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer id="footer" class="w3-center w3-padding-24">Last updated — <span id="lastUpdated">01/21/2024</span></footer>
-</main>
-
-<!-- JavaScript -->
-<script>
-  function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
-  }
-  function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
-  }
-
-  function setActiveLink(sectionId) {
-    var links = document.getElementsByClassName("sidebar-link");
-    for (var i = 0; i < links.length; i++) {
-      links[i].classList.remove("w3-white-active");
-      links[i].removeAttribute("aria-current");
+    function w3_open() {
+      var sb = document.getElementById("mySidebar");
+      var ov = document.getElementById("myOverlay");
+      if (sb) sb.style.display = "block";
+      if (ov) ov.style.display = "block";
+      document.body.classList.add("drawer-open");
+      // update aria
+      var btns = document.querySelectorAll('header .w3-button[aria-controls="mySidebar"]');
+      btns.forEach(function(b){ b.setAttribute("aria-expanded","true"); });
     }
-    var active = Array.prototype.find.call(links, function(l) {
-      return l.getAttribute("href") === "#" + sectionId;
+    function w3_close() {
+      var sb = document.getElementById("mySidebar");
+      var ov = document.getElementById("myOverlay");
+      if (sb) sb.style.display = "none";
+      if (ov) ov.style.display = "none";
+      document.body.classList.remove("drawer-open");
+      var btns = document.querySelectorAll('header .w3-button[aria-controls="mySidebar"]');
+      btns.forEach(function(b){ b.setAttribute("aria-expanded","false"); });
+    }
+
+    function setActiveLink(sectionId) {
+      var links = document.getElementsByClassName("sidebar-link");
+      for (var i = 0; i < links.length; i++) {
+        links[i].classList.remove("w3-white-active");
+        links[i].removeAttribute("aria-current");
+      }
+      var active = Array.prototype.find.call(links, function(l) {
+        return l.getAttribute("href") === "#" + sectionId;
+      });
+      if (active) {
+        active.classList.add("w3-white-active");
+        active.setAttribute("aria-current", "page");
+      }
+    }
+
+    function showSection(sectionId) {
+      var sections = document.getElementsByClassName("content-section");
+      for (var i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+      }
+      var target = document.getElementById(sectionId);
+      if (target) target.style.display = "block";
+
+      // Footer color to match section
+      var footer = document.getElementById("footer");
+      if (sectionId === "about") {
+        footer.className = "w3-dark-grey w3-center w3-padding-24";
+      } else {
+        footer.className = "w3-light-grey w3-center w3-padding-24";
+      }
+
+      setActiveLink(sectionId);
+    }
+
+    function navigate(sectionId) {
+      if (history.pushState) {
+        history.pushState(null, "", "#" + sectionId);
+      } else {
+        location.hash = sectionId;
+      }
+      showSection(sectionId);
+      if (window.matchMedia(MOBILE_QUERY).matches) {
+        w3_close();
+      }
+    }
+
+    // On load
+    window.onload = function () {
+      var hash = window.location.hash.replace("#", "");
+      var isMobile = window.matchMedia(MOBILE_QUERY).matches;
+
+      // If there's a deep link (#section), go straight there. Otherwise:
+      if (hash) {
+        showSection(hash);
+        if (isMobile) { w3_close(); }
+      } else {
+        // Default section is About for desktop…
+        showSection("about");
+        // …but on mobile, open the drawer and hide main so the user sees the menu first.
+        if (isMobile) { w3_open(); }
+      }
+
+      // Auto-update "Last updated"
+      var d = new Date();
+      var mm = String(d.getMonth() + 1).padStart(2, "0");
+      var dd = String(d.getDate()).padStart(2, "0");
+      var yyyy = d.getFullYear();
+      var el = document.getElementById("lastUpdated");
+      if (el) el.textContent = mm + "/" + dd + "/" + yyyy;
+    };
+
+    // Back/forward support
+    window.addEventListener("hashchange", function () {
+      var hash = window.location.hash.replace("#", "") || "about";
+      showSection(hash);
+      if (window.matchMedia(MOBILE_QUERY).matches) { w3_close(); }
     });
-    if (active) {
-      active.classList.add("w3-white-active");
-      active.setAttribute("aria-current", "page");
-    }
-  }
 
-  function showSection(sectionId) {
-    var sections = document.getElementsByClassName("content-section");
-    for (var i = 0; i < sections.length; i++) {
-      sections[i].style.display = "none";
-    }
-    var target = document.getElementById(sectionId);
-    if (target) target.style.display = "block";
-
-    // Adjust footer background to match section
-    var footer = document.getElementById("footer");
-    if (sectionId === "about") {
-      footer.className = "w3-dark-grey w3-center w3-padding-24";
-    } else {
-      footer.className = "w3-light-grey w3-center w3-padding-24";
-    }
-
-    setActiveLink(sectionId);
-    w3_close();
-  }
-
-  // Navigate + update hash (deep linking)
-  function navigate(sectionId) {
-    if (history.pushState) {
-      history.pushState(null, "", "#" + sectionId);
-    } else {
-      location.hash = sectionId;
-    }
-    showSection(sectionId);
-  }
-
-  // On load: show section from hash or default to about
-  window.onload = function () {
-    var hash = window.location.hash.replace("#", "");
-    var initial = hash || "about";
-    showSection(initial);
-
-    // Auto-update "Last updated" to today's date (MM/DD/YYYY)
-    var d = new Date();
-    var mm = String(d.getMonth() + 1).padStart(2, "0");
-    var dd = String(d.getDate()).padStart(2, "0");
-    var yyyy = d.getFullYear();
-    var el = document.getElementById("lastUpdated");
-    if (el) el.textContent = mm + "/" + dd + "/" + yyyy;
-  };
-
-  // Support back/forward for hash navigation
-  window.addEventListener("hashchange", function () {
-    var hash = window.location.hash.replace("#", "") || "about";
-    showSection(hash);
-  });
-</script>
+    // ESC closes drawer
+    document.addEventListener("keydown", function(e){
+      if (e.key === "Escape") { w3_close(); }
+    });
+  </script>
 
 </body>
 </html>
