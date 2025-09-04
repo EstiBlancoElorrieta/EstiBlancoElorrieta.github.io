@@ -14,7 +14,8 @@
   <style>
     :root {
       --sidebar-width: 300px;
-      --content-max: 1200px;
+      /* widened for desktop so there’s less empty space */
+      --content-max: 1280px;
     }
 
     html, body { height: 100%; }
@@ -115,6 +116,32 @@
       #myOverlay { display: none !important; }
       #mySidebar { display: block !important; }  /* fixed sidebar always visible */
       .mobile-hero{ display:none !important; }
+    }
+
+    /* ===== Desktop & large-laptop readability tweaks (added) ===== */
+    @media (min-width: 1024px) {
+      /* Bigger base text sitewide (About, Outreach, Advocacy, Media, etc.) */
+      body { font-size: 18px; line-height: 1.7; }
+
+      /* Ensure the content can use the wider width */
+      .w3-content { max-width: var(--content-max) !important; }
+
+      /* Keep section headings clearly larger than body text */
+      h1, h2 { font-size: 26px; line-height: 1.3; }
+    }
+
+    /* Mid-size tablets in landscape (optional gentle bump) */
+    @media (min-width: 820px) and (max-width: 1023px) {
+      body { font-size: 17px; line-height: 1.65; }
+    }
+
+    /* Publications & Invited Talks slightly smaller on desktop (added) */
+    @media (min-width: 1024px) {
+      #publications p,
+      #presentations p {
+        font-size: 16px;
+        line-height: 1.6;
+      }
     }
   </style>
 </head>
