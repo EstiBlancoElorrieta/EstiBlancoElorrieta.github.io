@@ -45,6 +45,8 @@
     .w3-main {
       margin-left: var(--sidebar-width);
       min-height: 100%;
+      position: relative;
+      z-index: 1;
     }
 
     /* Content width */
@@ -66,30 +68,39 @@
     .sidebar-link.w3-button.w3-white-active,
     .sidebar-link[aria-current="page"] { background: #eee; }
 
-    /* Top bar (shown on phones/tablets only) */
+    /* Top bar (phones only) */
     .topbar { display: none; }
 
     /* Footer */
     #footer { line-height: 1.6; }
 
-    /* Overlay slightly dim */
-    #myOverlay { background: rgba(0,0,0,0.25); }
+    /* Overlay (phones) */
+    #myOverlay { background: rgba(0,0,0,0.25); z-index: 2; }
 
+    /* ---------- RESPONSIVE RULES ---------- */
 
-	  /* Phones only (≤768px) */
-@media (max-width: 768px) {
-  .w3-main { margin-left: 0; }
-  .w3-sidebar { width: 280px; }
-  .topbar { display: block; position: sticky; top: 0; z-index: 4; }
-  body.drawer-open .w3-main { display: none; }
-}
+    /* Phones only (≤768px): drawer mode */
+    @media (max-width: 768px) {
+      .w3-main { margin-left: 0; }            /* content not pushed */
+      .w3-sidebar { width: 280px; }           /* drawer width */
+      .topbar { display: block; position: sticky; top: 0; z-index: 4; }
+      /* When drawer is open on phones, hide main so text never sits behind the menu */
+      body.drawer-open .w3-main { display: none !important; }
+    }
 
+    /* Desktop & tablets (>768px): classic layout, no overlay/drawer */
+    @media (min-width: 769px) {
+      .topbar { display: none !important; }
+      #myOverlay { display: none !important; }
+      #mySidebar { display: block !important; }  /* fixed sidebar always visible */
+      .w3-main { margin-left: var(--sidebar-width); }
+    }
   </style>
 </head>
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
-  <!-- Top bar (phones/tablets): only a Menu button (name removed) -->
+  <!-- Top bar (phones only): Menu button only (no name) -->
   <header class="topbar w3-bar w3-dark-grey w3-text-light-grey" role="banner">
     <button class="w3-bar-item w3-button"
             aria-label="Open menu"
@@ -102,7 +113,7 @@
 
   <!-- Sidebar/menu -->
   <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center"
-       style="z-index:3;" id="mySidebar" aria-label="Site navigation">
+       id="mySidebar" aria-label="Site navigation" style="z-index:3;">
 
     <br />
     <img src="https://EstiBlancoelorrieta.github.io/headshot3.png" alt="Esti Blanco-Elorrieta" class="profile-pic" />
@@ -126,7 +137,7 @@
     <a href="#media"         class="w3-bar-item w3-button sidebar-link" onclick="navigate('media')">MEDIA</a>
   </nav>
 
-  <!-- Overlay (click to close) -->
+  <!-- Overlay (phones only; clicking closes) -->
   <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay" title="close side menu"></div>
 
   <!-- Main content -->
@@ -363,20 +374,22 @@
 
   <!-- JavaScript -->
   <script>
-    // Phones & tablets breakpoint (also opens drawer by default at or below this width)
-var SMALL_SCREEN_QUERY = "(max-width: 768px)";
+    // Phones-only breakpoint for drawer behavior
+    var SMALL_SCREEN_QUERY = "(max-width: 768px)";
+    function isSmall(){ return window.matchMedia(SMALL_SCREEN_QUERY).matches; }
 
     function w3_open() {
+      if (!isSmall()) return; // ignore on desktop/tablets
       var sb = document.getElementById("mySidebar");
       var ov = document.getElementById("myOverlay");
       if (sb) sb.style.display = "block";
       if (ov) ov.style.display = "block";
       document.body.classList.add("drawer-open");
-      // update aria
       var btns = document.querySelectorAll('header .w3-button[aria-controls="mySidebar"]');
       btns.forEach(function(b){ b.setAttribute("aria-expanded","true"); });
     }
     function w3_close() {
+      if (!isSmall()) return; // ignore on desktop/tablets
       var sb = document.getElementById("mySidebar");
       var ov = document.getElementById("myOverlay");
       if (sb) sb.style.display = "none";
@@ -427,25 +440,17 @@ var SMALL_SCREEN_QUERY = "(max-width: 768px)";
         location.hash = sectionId;
       }
       showSection(sectionId);
-      if (window.matchMedia(SMALL_SCREEN_QUERY).matches) {
-        w3_close();
-      }
+      if (isSmall()) w3_close();
     }
 
     // On load
     window.onload = function () {
       var hash = window.location.hash.replace("#", "");
-      var small = window.matchMedia(SMALL_SCREEN_QUERY).matches;
+      // If deep link exists, go there; else default to About
+      showSection(hash || "about");
 
-      // If there’s a deep link, go straight there. Otherwise:
-      if (hash) {
-        showSection(hash);
-        if (small) { w3_close(); }
-      } else {
-        // Desktop: show About; Small screens: open drawer first
-        showSection("about");
-        if (small) { w3_open(); }
-      }
+      // Phones: open drawer by default when landing without hash
+      if (!hash && isSmall()) w3_open();
 
       // Auto-update "Last updated"
       var d = new Date();
@@ -460,10 +465,22 @@ var SMALL_SCREEN_QUERY = "(max-width: 768px)";
     window.addEventListener("hashchange", function () {
       var hash = window.location.hash.replace("#", "") || "about";
       showSection(hash);
-      if (window.matchMedia(SMALL_SCREEN_QUERY).matches) { w3_close(); }
+      if (isSmall()) w3_close();
     });
 
-    // ESC closes drawer
+    // Ensure correct state after resizing
+    window.addEventListener("resize", function () {
+      if (!isSmall()) {
+        // desktop/tablet state
+        document.body.classList.remove("drawer-open");
+        var ov = document.getElementById("myOverlay");
+        if (ov) ov.style.display = "none";
+        var sb = document.getElementById("mySidebar");
+        if (sb) sb.style.display = "block";
+      }
+    });
+
+    // ESC closes drawer on phones
     document.addEventListener("keydown", function(e){
       if (e.key === "Escape") { w3_close(); }
     });
