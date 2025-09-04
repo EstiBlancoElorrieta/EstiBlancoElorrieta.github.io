@@ -95,6 +95,19 @@
   body.drawer-open #myOverlay { display: none !important; }  /* no “there’s content behind” hint */
 }
 
+	  /* --- mobile-only hero in About --- */
+.mobile-hero{ display:none; text-align:center; margin:0 0 16px; }
+.mobile-hero img{ width:140px; height:140px; border-radius:50%; object-fit:cover; }
+.mobile-hero .name{ margin-top:10px; font-weight:700; font-size:20px; line-height:1.2; }
+
+@media (max-width:768px){
+  .mobile-hero{ display:block; }
+}
+@media (min-width:769px){
+  .mobile-hero{ display:none !important; }
+}
+
+
     /* Desktop & tablets (>768px): classic layout, no overlay/drawer */
     @media (min-width: 769px) {
       .topbar { display: none !important; }
@@ -153,6 +166,12 @@
     <!-- About -->
     <section class="w3-container w3-dark-grey w3-text-light-grey content-section" id="about" aria-labelledby="about-title">
       <div class="w3-content">
+		     <!-- Mobile-only hero -->
+    <div class="mobile-hero" aria-hidden="true">
+      <img src="https://EstiBlancoelorrieta.github.io/headshot3.png" alt="Esti Blanco-Elorrieta">
+      <div class="name">Esti<br>Blanco-Elorrieta</div>
+    </div>
+
         <h1 id="about-title" class="w3-xxlarge" style="margin-top:0;"><b>About Me</b></h1>
         <p>I am an Assistant Professor of Psychology and Neural Science at New York University. 
         In my research, I combine insights from monolingual and multilingual individuals, 
