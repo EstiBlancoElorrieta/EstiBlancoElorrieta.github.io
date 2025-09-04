@@ -75,19 +75,15 @@
     /* Overlay slightly dim */
     #myOverlay { background: rgba(0,0,0,0.25); }
 
-    /* Phones & tablets (≤1200px) */
-    @media (max-width: 1200px) {
-      .w3-main { margin-left: 0; }
-      .w3-sidebar { width: 280px; } /* drawer width */
-      .topbar {
-        display: block;
-        position: sticky;
-        top: 0;
-        z-index: 4;
-      }
-      /* When drawer is open on small screens, hide main so you don't see the gray section behind it */
-      body.drawer-open .w3-main { display: none; }
-    }
+
+	  /* Phones only (≤768px) */
+@media (max-width: 768px) {
+  .w3-main { margin-left: 0; }
+  .w3-sidebar { width: 280px; }
+  .topbar { display: block; position: sticky; top: 0; z-index: 4; }
+  body.drawer-open .w3-main { display: none; }
+}
+
   </style>
 </head>
 
@@ -368,7 +364,7 @@
   <!-- JavaScript -->
   <script>
     // Phones & tablets breakpoint (also opens drawer by default at or below this width)
-    var SMALL_SCREEN_QUERY = "(max-width: 1200px)";
+var SMALL_SCREEN_QUERY = "(max-width: 768px)";
 
     function w3_open() {
       var sb = document.getElementById("mySidebar");
